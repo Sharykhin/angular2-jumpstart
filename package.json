@@ -3,10 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "postinstall": "npm run typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "serve": "cd public && lite-server",
+    "start": "concurrent \"rm -rf public/*\" \"gulp build\" \"gulp watch\" ",
     "typings": "typings",
     "build": "concurrent \"rm -rf public/*\" \"gulp build\" "
   },

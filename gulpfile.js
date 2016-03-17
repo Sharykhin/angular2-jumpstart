@@ -38,7 +38,16 @@ gulp.task('copy:assets', function() {
 gulp.task('copy:index', function() {
 	return gulp.src(['src/index.html'])
 		.pipe(gulp.dest('public'))
-})
+});
+
+gulp.task('watch', function() {
+	gulp.watch(['src/index.html'], ['copy:index']);
+
+	gulp.watch(['src/app/**/*.html', 'src/app/**/*.css'], ['copy:assets']);
+
+	gulp.watch(['src/app/**/*.ts'], ['compile']);
+
+});
 
 gulp.task('build', ['compile', 'copy:libs', 'copy:assets', 'copy:index']);
 gulp.task('default', ['build']);

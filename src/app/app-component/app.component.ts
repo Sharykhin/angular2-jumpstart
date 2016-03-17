@@ -8,6 +8,6 @@ import {Component, OnInit} from 'angular2/core';
 export class AppComponent implements OnInit {
 
 	ngOnInit() {
-		console.log('init app component');
+		console.log('init app component has been completed');
 	}
 }
