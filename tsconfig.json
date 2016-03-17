@@ -14,7 +14,8 @@
   "filesGlob": [
     "app/**/*.ts",
     "typings/**/*.d.ts",
-    "node_modules/angular2/typings/browser.d.ts"
+    "node_modules/angular2/typings/browser.d.ts",
+    "node_modules/immutable/dist/immutable.d.ts"
   ],
   "atom": {
     "rewriteTsconfig": true
@@ -24,6 +25,7 @@
     "typings/browser/ambient/es6-shim/es6-shim.d.ts",
     "typings/main.d.ts",
     "typings/main/ambient/es6-shim/es6-shim.d.ts",
-    "node_modules/angular2/typings/browser.d.ts"
+    "node_modules/angular2/typings/browser.d.ts",
+    "node_modules/immutable/dist/immutable.d.ts"
   ]
 }
