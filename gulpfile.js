@@ -4,10 +4,18 @@ const typescript = require('gulp-typescript');
 const tscConfig = require('./tsconfig.json');
 const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
+const tsconfig = require('tsconfig-glob');
 
 // clean the contents of the distribution directory
 gulp.task('clean', function() {
 	return del('public/**/*');
+});
+
+gulp.task('tsconfig-glob', function() {
+	return tsconfig({
+		configPath: '.',
+		indent: 2
+	});
 });
 
 // TypeScript compile

@@ -11,9 +11,19 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+  "filesGlob": [
+    "app/**/*.ts",
+    "typings/**/*.d.ts",
+    "node_modules/angular2/typings/browser.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "files": [
+    "typings/browser.d.ts",
+    "typings/browser/ambient/es6-shim/es6-shim.d.ts",
+    "typings/main.d.ts",
+    "typings/main/ambient/es6-shim/es6-shim.d.ts",
+    "node_modules/angular2/typings/browser.d.ts"
   ]
 }
