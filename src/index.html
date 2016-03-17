@@ -4,7 +4,19 @@
  	<base href="/">
 	<title>Angular 2 QuickStart</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	 <script>
+	
+</head>
+<body>
+
+	<h2>Angular Jump Start</h2>
+  <app-component></app-component>
+
+	<script src="libs/angular2-polyfills.js"></script>
+	<script src="libs/system.src.js"></script>
+	<script src="libs/Rx.js"></script>
+	<script src="libs/angular2.dev.js"></script>
+	<script src="libs/router.dev.js"></script>
+   <script>
     System.config({
         packages: {
           app: {
@@ -13,18 +25,8 @@
           }
         }
       });
-      System.import('app/main')
+      System.import('app/bootstrap')
             .then(null, console.error.bind(console));
   </script>
-</head>
-<body>
-
-	<h2>Angular Jump Start</h2>
-
-	<script src="lib/angular2-polyfills.js"></script>
-	<script src="lib/system.src.js"></script>
-	<script src="lib/Rx.js"></script>
-	<script src="lib/angular2.dev.js"></script>
-	<script src="lib/router.dev.js"></script>
 </body>
 </html>

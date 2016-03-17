@@ -10,7 +10,7 @@ gulp.task('clean', function() {
 });
 
 // TypeScript compile
-gulp.task('compile', ['clean'], function() {
+gulp.task('compile', function() {
 	return gulp
 		.src('src/app/**/*.ts')
 		.pipe(sourcemaps.init()) // <--- sourcemaps
@@ -31,13 +31,14 @@ gulp.task('copy:libs', function() {
 });
 
 gulp.task('copy:assets', function() {
-	return gulp.src(['src/app/**/*', '!app/**/*.ts'], {
-			base: './'
-		})
-		.pipe(gulp.dest('public'))
+	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
+		.pipe(gulp.dest('public/app'))
 });
 
-gulp.task('build', ['compile'
-	'copy:libs', 'copy:assets'
-]);
+gulp.task('copy:index', function() {
+	return gulp.src(['src/index.html'])
+		.pipe(gulp.dest('public'))
+})
+
+gulp.task('build', ['compile', 'copy:libs', 'copy:assets', 'copy:index']);
 gulp.task('default', ['build']);
