@@ -9,9 +9,10 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
+    "removeComments": true,
+    "pretty": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "baseUrl": "./src/app/",
   "filesGlob": [
     "app/**/*.ts",
     "typings/**/*.d.ts",
