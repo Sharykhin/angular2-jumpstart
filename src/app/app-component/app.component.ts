@@ -1,6 +1,23 @@
 
 import {Component, OnInit} from 'angular2/core';
-import { List } from 'immutable';
+
+interface Hero {
+	id: number;
+	name: string;
+}
+
+let HEROES: Hero[] = [
+	{ "id": 11, "name": "Mr. Nice" },
+	{ "id": 12, "name": "Narco" },
+	{ "id": 13, "name": "Bombasto" },
+	{ "id": 14, "name": "Celeritas" },
+	{ "id": 15, "name": "Magneta" },
+	{ "id": 16, "name": "RubberMan" },
+	{ "id": 17, "name": "Dynama" },
+	{ "id": 18, "name": "Dr IQ" },
+	{ "id": 19, "name": "Magma" },
+	{ "id": 20, "name": "Tornado" }
+];
 
 @Component({
 	selector: 'app-component',
@@ -9,9 +26,18 @@ import { List } from 'immutable';
 })
 export class AppComponent implements OnInit {
 
+	public heroes = HEROES;
+
+	public selectedHero: Hero;
+
 	constructor() {
-		var list = List.of(1, 2, 3);
-		console.log(list.size);
+		var list = [1, 2, 3];
+		console.log(list.length);
+	}
+
+	onSelect(hero: Hero) {
+		console.log(hero);
+		this.selectedHero = hero;
 	}
 
 	ngOnInit() {
