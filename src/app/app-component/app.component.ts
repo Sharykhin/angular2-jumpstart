@@ -2,6 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {HeroDetailComponent} from './../hero-detail-component/hero-detail.component';
 import {HeroService} from './../services/hero.service';
 
+
 interface Hero {
 	id: number;
 	name: string;
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
 	}
 
 	getHeroes() {
-		this.heroes = this._heroService.getHeroes();
+		this._heroService.getHeroes().then(heroes => this.heroes = heroes);
 	}
 
 	onSelect(hero: Hero) {
