@@ -16,6 +16,7 @@
 	<script src="libs/Rx.js"></script>
 	<script src="libs/angular2.dev.js"></script>
 	<script src="libs/router.dev.js"></script>
+  <script src="libs/EventEmitter.min.js"></script>
    <script>
     System.config({
         packages: {
@@ -25,7 +26,7 @@
           }
         },
          map: {
-          immutable: 'libs/immutable.min.js'
+          'eventemitter': 'libs/EventEmitter.min.js'
         }
       });
       System.import('app/bootstrap')
