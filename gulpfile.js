@@ -47,6 +47,9 @@ gulp.task('copy:libs', function() {
 });
 
 gulp.task('copy:assets', function() {
+	gulp.src(['src/css/**/*.css'])
+		.pipe(gulp.dest('public/css'));
+
 	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
 		.pipe(gulp.dest('public/app'))
 });
