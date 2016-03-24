@@ -1,6 +1,4 @@
-
 import {Component, OnInit} from 'angular2/core';
-import { List } from 'immutable';
 
 @Component({
 	selector: 'app-component',
@@ -10,8 +8,12 @@ import { List } from 'immutable';
 export class AppComponent implements OnInit {
 
 	constructor() {
-		var list = List.of(1, 2, 3);
-		console.log(list.size);
+		console.log('constructor');
+		this.check().then((response: string) => console.log(response));
+	}
+
+	check() {
+		return Promise.resolve('ha ha ha');
 	}
 
 	ngOnInit() {
