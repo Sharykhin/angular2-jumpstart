@@ -54,6 +54,7 @@ gulp.task('copy:libs', function() {
 		.pipe(gulp.dest('public/libs'))
 });
 
+
 gulp.task('copy:vendors', function() {
 	return gulp.src(['src/vendor/**'])
 		.pipe(gulp.dest('public/vendor'));
@@ -65,6 +66,11 @@ gulp.task('copy:app_assets', function() {
 			plugins: [cleancss]
 		}))
 		.pipe(gulp.dest('public/app'));
+});
+
+gulp.task('copy:assets', function() {
+	gulp.src(['src/css/**/*.css'])
+		.pipe(gulp.dest('public/css'));
 
 	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
 		.pipe(gulp.dest('public/app'))

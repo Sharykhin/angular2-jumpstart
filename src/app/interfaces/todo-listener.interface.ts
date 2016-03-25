@@ -3,5 +3,5 @@ export interface Listener {
 }
 
 export interface TodoListenerInterface extends Listener {
-	onTodoAdd(): void;
+	onTodoAdd(title: string): void;
 }
