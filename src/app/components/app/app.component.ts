@@ -6,6 +6,7 @@ import {TodoListComponent} from './../todo-list/todo-list.component';
 @Component({
 	selector: 'app',
 	templateUrl: '/app/components/app/app.component.html',
+	styleUrls: ['/app/components/app/app.component.css'],
 	providers: [ROUTER_PROVIDERS],
 	directives: [ROUTER_DIRECTIVES]
 })
