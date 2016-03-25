@@ -1,7 +1,9 @@
+import {Todo} from './../interfaces/todo.interface';
+
 export interface Listener {
 	register(event: string, listener: () => any): void;
 }
 
 export interface TodoListenerInterface extends Listener {
-	onTodoAdd(title: string): void;
+	onTodoAdd(todo: Todo): void;
 }

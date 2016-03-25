@@ -1,10 +1,14 @@
-<div class="todo-list">
-	<ul class="list-group">
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
-	  <li class="list-group-item">Vestibulum at eros</li>
-	</ul>
+<div class="row">
+	<div class="todo-list">
+		<ul class="list-group">
+		  <li *ngFor="#todo of todos" class="list-group-item" [class.is-done]="todo.done">
+		 	<span>
+		 		<input class="done" type="checkbox" [attr.checked]="todo.done" (click)="onDoneChange(todo)" />
+	 		</span>
+		  	{{ todo.title }}		  	
+		  </li>
+		  
+		</ul>
+	</div>
 </div>
 <todo-form></todo-form>

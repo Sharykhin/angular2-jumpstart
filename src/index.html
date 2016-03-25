@@ -19,6 +19,7 @@
 	<script src="libs/Rx.js"></script>
 	<script src="libs/angular2.dev.js"></script>
 	<script src="libs/router.dev.js"></script>
+  <script src="libs/http.dev.js"></script>
   <script src="libs/EventEmitter.min.js"></script>
    <script>
     System.config({
@@ -26,10 +27,13 @@
           app: {
             format: 'register',
             defaultExtension: 'js'
-          }
+          },
+          'rxjs': {defaultExtension: 'js'}
         },
          map: {
-          'eventemitter': 'libs/EventEmitter.min.js'
+          'eventemitter': 'libs/EventEmitter.min.js',
+          'rxjs': 'libs/rxjs'
+
         }
       });
       System.import('app/bootstrap')

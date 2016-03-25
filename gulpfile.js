@@ -42,6 +42,9 @@ gulp.task('tslint', function() {
 });
 
 gulp.task('copy:libs', function() {
+	gulp.src(['node_modules/rxjs/**'])
+		.pipe(gulp.dest('public/libs/rxjs'));
+
 	return gulp.src([
 			'node_modules/angular2/bundles/angular2-polyfills.js',
 			'node_modules/systemjs/dist/system.src.js',
@@ -49,9 +52,10 @@ gulp.task('copy:libs', function() {
 			'node_modules/angular2/bundles/angular2.dev.js',
 			'node_modules/angular2/bundles/router.dev.js',
 			'node_modules/angular2/bundles/http.dev.js',
-			'node_modules/wolfy87-eventemitter/EventEmitter.min.js'
+			'node_modules/wolfy87-eventemitter/EventEmitter.min.js',
+
 		])
-		.pipe(gulp.dest('public/libs'))
+		.pipe(gulp.dest('public/libs'));
 });
 
 
@@ -68,9 +72,7 @@ gulp.task('copy:app_assets', function() {
 		.pipe(gulp.dest('public/app'));
 });
 
-gulp.task('copy:assets', function() {
-	gulp.src(['src/css/**/*.css'])
-		.pipe(gulp.dest('public/css'));
+gulp.task('copy:app_assets', function() {
 
 	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
 		.pipe(gulp.dest('public/app'))

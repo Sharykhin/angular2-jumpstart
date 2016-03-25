@@ -1,6 +1,10 @@
-<div>
+<div class="row">
 	<form (ngSubmit)="onSubmit(title)">
-		<input type="text" #title placeholder="Buy some milk" />
-		<button type="submit">Save</button>
+		<div class="input-group">	      
+	      <input type="text" #title class="form-control" placeholder="Buy some milk" />
+	      <div class="input-group-btn">
+	        <button type="submit" class="btn btn-default dropdown-toggle">Save</button>	      
+	      </div><!-- /btn-group -->
+	    </div><!-- /input-group -->	 
 	</form>
 </div>

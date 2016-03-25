@@ -3,6 +3,7 @@ import {Injectable} from 'angular2/core';
 declare var EventEmitter: any;
 
 import {TodoListenerInterface} from './../interfaces/todo-listener.interface';
+import {Todo} from './../interfaces/todo.interface';
 
 const TODO_ADD = 'onTodoAdd';
 
@@ -19,8 +20,8 @@ export class TodoListener implements TodoListenerInterface {
 		this.ee.addListener(event, listener);
 	}
 
-	onTodoAdd(title: string) {
-		this.ee.emitEvent(TodoListener.TODO_ADD, [title]);
+	onTodoAdd(todo: Todo) {
+		this.ee.emitEvent(TodoListener.TODO_ADD, [todo]);
 	}
 
 

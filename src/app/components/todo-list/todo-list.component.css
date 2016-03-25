@@ -1,0 +1,13 @@
+.list-group-item span {	
+	float: right;	
+}
+
+.done {
+	width: 23px;
+	height: 23px;
+	margin-top: 0px;
+}
+
+.is-done {
+	text-decoration: line-through;
+}
