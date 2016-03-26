@@ -2,6 +2,10 @@ import {Directive, ElementRef, Input, OnInit} from 'angular2/core';
 
 @Directive({
 	selector: '[myHighLight]',
+	host: {
+		'(mouseenter)': 'onMouseEnter()',
+		'(mouseleave)': 'onMouseLeave()'
+	}
 
 })
 export class HighlightDirective implements OnInit {
@@ -12,8 +16,15 @@ export class HighlightDirective implements OnInit {
 
 	constructor(private el: ElementRef) {}
 
-	ngOnInit() {
-		console.log(this.highlightColor);
-		this.el.nativeElement.style.color = this.highlightColor || this._defaultColor;
+	onMouseEnter() {
+		this._highlight(this.highlightColor || this._defaultColor);
+	}
+
+	onMouseLeave() {
+		this._highlight(null);
+	}
+
+	private _highlight(color: string) {
+		this.el.nativeElement.style.color = color;
 	}
 }
