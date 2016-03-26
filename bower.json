@@ -1,0 +1,19 @@
+{
+  "name": "angular2-jumpstart",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/Sharykhin/angular2-jumpstart",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
