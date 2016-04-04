@@ -8,7 +8,7 @@ import {Directive, ElementRef, Input, OnInit} from 'angular2/core';
 	}
 
 })
-export class HighlightDirective implements OnInit {
+export class HighlightDirective {
 
 	@Input('myHighLight') highlightColor: string;
 
