@@ -29,13 +29,36 @@ export class TodoListComponent implements OnInit {
 	}
 
 	onDoneChange(todo: Todo) {
-		todo.done = !todo.done;
+		this._todoService.toggleTodo(todo)
+			.subscribe(
+				res => todo.done = !todo.done,
+				err => console.error(err)
+			);
+	}
+
+	onDeleteTodo(todo: Todo) {
+		let confirm = window.confirm('Are you sure?');
+		if (confirm) {
+			this._todoService.removeTodo(todo)
+				.subscribe(
+					res => {
+						this._todoListener.onTodoDelete(todo);
+						let index = this.todos.indexOf(todo);
+						this.todos.splice(index, 1);
+					},
+					err => console.error(err)
+				);
+		}
 	}
 
 	ngOnInit() {
 		this._todoListener.register(TodoListener.TODO_ADD, (todo: Todo) => {
-			console.info('Yes todo has been added', todo);
+			console.info('New todo has been added', todo);
 			this.todos.push(todo);
+		});
+
+		this._todoListener.register(TodoListener.TODO_DELETE, (todo: Todo) => {
+			console.info('Todo has been removed', todo);
 		});
 
 		this.getTodos();

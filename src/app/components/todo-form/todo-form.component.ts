@@ -16,8 +16,6 @@ export class TodoFormComponent {
 	}
 
 	onSubmit(title) {
-		console.log(title.value);
-		//this._todoListener.onTodoAdd(title.value);
 		this._todoService.createTodo({
 			done: false,
 			title: title.value
