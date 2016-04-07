@@ -3,6 +3,7 @@
 		<ul class="list-group">
 		  <li *ngFor="#todo of todos" class="list-group-item" [class.is-done]="todo.done">
 		  	<button (click)="onDeleteTodo(todo)" type="button" class="btn btn-danger btn-sm">DELETE</button>
+		  	<button (click)="onEditTodo(todo)" type="button" class="btn btn-primary btn-sm">EDIT</button>
 		 	<span>		 		
 		 		<input class="done" type="checkbox" [checked]="todo.done" (click)="onDoneChange(todo)" />
 	 		</span>

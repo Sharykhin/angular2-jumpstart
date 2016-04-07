@@ -3,6 +3,7 @@ import {TodoFormComponent} from './../todo-form/todo-form.component';
 import {TodoListener} from './../../listeners/todo.listener';
 import {TodoService} from './../../services/todo.service';
 import {Todo} from './../../interfaces/todo.interface';
+import { Router } from 'angular2/router';
 
 
 @Component({
@@ -10,14 +11,17 @@ import {Todo} from './../../interfaces/todo.interface';
 	templateUrl: '/app/components/todo-list/todo-list.component.html',
 	styleUrls: ['app/components/todo-list/todo-list.component.css'],
 	directives: [TodoFormComponent],
-	providers: [TodoListener, TodoService]
+	providers: [TodoListener, TodoService, Router]
 	//encapsulation: ViewEncapsulation.None
 })
 export class TodoListComponent implements OnInit {
 
 	public todos: Todo[];
 
-	constructor(private _todoListener: TodoListener, private _todoService: TodoService) {
+	constructor(
+		private _todoListener: TodoListener,
+		private _todoService: TodoService,
+		private _router: Router) {
 	}
 
 	getTodos() {
@@ -34,6 +38,10 @@ export class TodoListComponent implements OnInit {
 				res => todo.done = !todo.done,
 				err => console.error(err)
 			);
+	}
+
+	onEditTodo(todo: Todo) {
+		//this._router.navigate(['TodoEdit', { id: todo.id }]);
 	}
 
 	onDeleteTodo(todo: Todo) {
