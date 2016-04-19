@@ -35,4 +35,12 @@ export class TodoService {
 			headers: headers
 		}).map(res => res.json());
 	}
+
+	getTodo(id: string) {
+		let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this._http.get(`${API_URL}/${id}`, {
+			headers: headers
+		}).map(res => res.json());
+	}
 }

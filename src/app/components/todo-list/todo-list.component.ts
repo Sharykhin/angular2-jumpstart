@@ -11,7 +11,7 @@ import { Router } from 'angular2/router';
 	templateUrl: '/app/components/todo-list/todo-list.component.html',
 	styleUrls: ['app/components/todo-list/todo-list.component.css'],
 	directives: [TodoFormComponent],
-	providers: [TodoListener, TodoService, Router]
+	providers: [TodoListener, TodoService]
 	//encapsulation: ViewEncapsulation.None
 })
 export class TodoListComponent implements OnInit {
@@ -21,7 +21,8 @@ export class TodoListComponent implements OnInit {
 	constructor(
 		private _todoListener: TodoListener,
 		private _todoService: TodoService,
-		private _router: Router) {
+		private _router: Router
+		) {
 	}
 
 	getTodos() {
@@ -41,7 +42,7 @@ export class TodoListComponent implements OnInit {
 	}
 
 	onEditTodo(todo: Todo) {
-		//this._router.navigate(['TodoEdit', { id: todo.id }]);
+		this._router.navigate(['TodoEdit', { id: todo.id }]);
 	}
 
 	onDeleteTodo(todo: Todo) {

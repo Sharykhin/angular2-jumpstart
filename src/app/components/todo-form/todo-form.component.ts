@@ -3,18 +3,22 @@ import {TodoListener} from './../../listeners/todo.listener';
 import {Todo} from './../../interfaces/todo.interface';
 import {TodoService} from './../../services/todo.service';
 import {HighlightDirective} from './../../directives/highlight.directive';
+import {Observable}     from 'rxjs/Observable';
 
 @Component({
 	selector: 'todo-form',
 	templateUrl: '/app/components/todo-form/todo-form.component.html',
-	directives: [HighlightDirective]
+	directives: [HighlightDirective],
+	inputs: ['todo']
 })
 export class TodoFormComponent {
+	
+	public todo: Todo;
 
 	constructor(
 		private _todoListener: TodoListener,
 		private _todoService: TodoService	
-		) { }
+	) { console.log(this.todo); }
 
 	onSubmit(title) {
 		this._todoService.createTodo({

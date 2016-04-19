@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {TodoListComponent} from './../todo-list/todo-list.component';
 import {TodoFormComponent} from './../todo-form/todo-form.component';
+import {TodoEditComponent} from './../todo-edit/todo-edit.component';
 
 @Component({
 	selector: 'app',
@@ -19,6 +20,11 @@ import {TodoFormComponent} from './../todo-form/todo-form.component';
 		name: 'TodoList',
 		component: TodoListComponent,
 		useAsDefault: true
+	},
+	{
+		path:'/:id',
+		name: 'TodoEdit',
+		component: TodoEditComponent
 	}	
 ])
 export class AppComponent {
