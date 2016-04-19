@@ -19,12 +19,7 @@ import {TodoFormComponent} from './../todo-form/todo-form.component';
 		name: 'TodoList',
 		component: TodoListComponent,
 		useAsDefault: true
-	},
-	{
-		path: '/:id',
-		name: 'TodoEdit',
-		component: TodoFormComponent
-	}
+	}	
 ])
 export class AppComponent {
 	public title: string = 'Todo List';

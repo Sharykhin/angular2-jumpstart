@@ -3,20 +3,17 @@ import {TodoListener} from './../../listeners/todo.listener';
 import {Todo} from './../../interfaces/todo.interface';
 import {TodoService} from './../../services/todo.service';
 import {HighlightDirective} from './../../directives/highlight.directive';
-import { Router, RouteParams } from 'angular2/router';
 
 @Component({
 	selector: 'todo-form',
 	templateUrl: '/app/components/todo-form/todo-form.component.html',
 	directives: [HighlightDirective]
 })
-export class TodoFormComponent implements OnInit {
+export class TodoFormComponent {
 
 	constructor(
 		private _todoListener: TodoListener,
-		private _todoService: TodoService,
-		private _router: Router,
-		private _routeParams: RouteParams
+		private _todoService: TodoService	
 		) { }
 
 	onSubmit(title) {
@@ -27,10 +24,5 @@ export class TodoFormComponent implements OnInit {
 			todo => this._todoListener.onTodoAdd(todo),
 			err => console.error(err)
 		);
-	}
-
-	ngOnInit() {
-		let id = this._routeParams.get('id');
-		console.log(id);
-	}
+	}	
 }

@@ -26,7 +26,7 @@ gulp.task('tsconfig-glob', function() {
 });
 
 // TypeScript compile
-gulp.task('compile', ['tslint'], function() {
+gulp.task('compile', [], function() {
 	return gulp
 		.src('src/app/**/*.ts')
 		.pipe(sourcemaps.init()) // <--- sourcemaps
