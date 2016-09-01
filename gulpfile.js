@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const del = require('del');
 const typescript = require('gulp-typescript');
+const gulpif = require('gulp-if');
 const tscConfig = require('./tsconfig.json');
 const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
@@ -12,6 +13,9 @@ const cleancss = new LessPluginCleanCSS({
 	advanced: true
 });
 const cleanCSS = require('gulp-clean-css');
+
+const ENV = process.env.NODE_ENV;
+const DEV_ENV = ENV !== 'production';
 
 // clean the contents of the distribution directory
 gulp.task('clean', function() {
@@ -29,9 +33,9 @@ gulp.task('tsconfig-glob', function() {
 gulp.task('compile', ['tslint'], function() {
 	return gulp
 		.src('src/app/**/*.ts')
-		.pipe(sourcemaps.init()) // <--- sourcemaps
+		.pipe(gulpif(DEV_ENV, sourcemaps.init())) // <--- sourcemaps
 		.pipe(typescript(tscConfig.compilerOptions))
-		.pipe(sourcemaps.write('.')) // <--- sourcemaps
+		.pipe(gulpif(DEV_ENV, sourcemaps.write('.'))) // <--- sourcemaps
 		.pipe(gulp.dest('public/app'));
 });
 
