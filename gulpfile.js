@@ -86,10 +86,12 @@ gulp.task('copy:index', function() {
 		.pipe(gulp.dest('public'))
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
 	gulp.watch(['src/index.html'], ['copy:index']);
 
-	gulp.watch(['src/app/**/*.html', 'src/app/**/*.css'], ['copy:app_assets']);
+	gulp.watch(['src/app/**/*.html', 'src/app/**/*.css', 'src/app/**/*.less'], ['copy:app_assets']);
+
+	gulp.watch(['src/assets/**/*.css', 'src/app/**/*.less'], ['copy:assets']);
 
 	gulp.watch(['src/app/**/*.ts'], ['compile']);
 
