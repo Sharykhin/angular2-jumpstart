@@ -16,11 +16,12 @@ const cleanCSS = require('gulp-clean-css');
 
 const ENV = process.env.NODE_ENV;
 const DEV_ENV = ENV !== 'production';
-const DIST_DIR = 'dist';
+const DIST_DIR = '.';
 
 // clean the contents of the distribution directory
 gulp.task('clean', function() {
-	return del(`${DIST_DIR}/**/*`);
+	del(`${DIST_DIR}/css`);
+	return del(`${DIST_DIR}/app`);
 });
 
 gulp.task('tsconfig-glob', function() {
@@ -84,18 +85,18 @@ gulp.task('copy:assets', function() {
 });
 
 gulp.task('copy:index', function() {
-	return gulp.src(['src/index.html'])
+	return gulp.src(['index.html'])
 		.pipe(gulp.dest(`${DIST_DIR}`))
 });
 
 gulp.task('watch', ['build'], function() {
-	gulp.watch(['src/index.html'], ['copy:index']);
+	gulp.watch(['index.html'], ['copy:index']);
 
-	gulp.watch(['src/app/**/*.html', 'src/app/**/*.css', 'src/app/**/*.less'], ['copy:app_assets']);
+	gulp.watch(['app/**/*.html', 'app/**/*.css', 'app/**/*.less'], ['copy:app_assets']);
 
-	gulp.watch(['src/assets/**/*.css', 'src/app/**/*.less'], ['copy:assets']);
+	gulp.watch(['assets/**/*.css', 'app/**/*.less'], ['copy:assets']);
 
-	gulp.watch(['src/app/**/*.ts'], ['compile']);
+	gulp.watch(['app/**/*.ts'], ['compile']);
 
 });
 

@@ -8,21 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var AboutComponent = (function () {
-    function AboutComponent() {
-        console.log('AboutComponent: constructor');
+var core_1 = require('@angular/core');
+var HomeComponent = (function () {
+    function HomeComponent() {
+        console.log('HomeComponent: constructor');
     }
-    AboutComponent = __decorate([
+    HomeComponent = __decorate([
         core_1.Component({
-            selector: 'about',
-            templateUrl: '/app/componentns/about/about.component.html',
-            styleUrls: ['/app/components/about/about.component.css']
+            selector: 'home',
+            templateUrl: 'app/components/home/home.component.html',
+            styleUrls: ['app/components/home/home.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AboutComponent);
-    return AboutComponent;
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.AboutComponent = AboutComponent;
+exports.HomeComponent = HomeComponent;
 
-//# sourceMappingURL=about.component.js.map
+//# sourceMappingURL=home.component.js.map
