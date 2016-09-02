@@ -1,33 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "public/app",
     "target": "es5",
-    "module": "system",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
-  },
-  "filesGlob": [
-    "app/**/*.ts",
-    "typings/**/*.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  },
-  "files": [
-    "typings/browser.d.ts",
-    "typings/browser/ambient/es6-shim/es6-shim.d.ts",
-    "typings/browser/definitions/es6-promise/es6-promise.d.ts",
-    "typings/main.d.ts",
-    "typings/main/ambient/es6-shim/es6-shim.d.ts",
-    "typings/main/definitions/es6-promise/es6-promise.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts"
-  ]
+    "noImplicitAny": false
+  }
 }

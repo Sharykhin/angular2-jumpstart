@@ -16,10 +16,11 @@ const cleanCSS = require('gulp-clean-css');
 
 const ENV = process.env.NODE_ENV;
 const DEV_ENV = ENV !== 'production';
+const DIST_DIR = 'dist';
 
 // clean the contents of the distribution directory
 gulp.task('clean', function() {
-	return del('public/**/*');
+	return del(`${DIST_DIR}/**/*`);
 });
 
 gulp.task('tsconfig-glob', function() {
@@ -36,25 +37,26 @@ gulp.task('compile', ['tslint'], function() {
 		.pipe(gulpif(DEV_ENV, sourcemaps.init())) // <--- sourcemaps
 		.pipe(typescript(tscConfig.compilerOptions))
 		.pipe(gulpif(DEV_ENV, sourcemaps.write('.'))) // <--- sourcemaps
-		.pipe(gulp.dest('public/app'));
+		.pipe(gulp.dest(`${DIST_DIR}/app`));
 });
 
 gulp.task('tslint', function() {
-	return gulp.src('src/app/**/*.ts')
+	return gulp.src(`src/app/**/*.ts`)
 		.pipe(tslint())
 		.pipe(tslint.report('verbose'));
 });
 
 gulp.task('copy:libs', function() {
-	return gulp.src([
-			'node_modules/angular2/bundles/angular2-polyfills.js',
-			'node_modules/systemjs/dist/system.src.js',
-			'node_modules/rxjs/bundles/Rx.js',
-			'node_modules/angular2/bundles/angular2.dev.js',
-			'node_modules/angular2/bundles/router.dev.js',
-			'node_modules/angular2/bundles/http.dev.js'
+	 gulp.src([
+			'node_modules/core-js/client/shim.min.js',
+			'node_modules/zone.js/dist/zone.js',
+			'node_modules/reflect-metadata/Reflect.js',
+			'node_modules/systemjs/dist/system.src.js'
 		])
-		.pipe(gulp.dest('public/libs'))
+		.pipe(gulp.dest(`${DIST_DIR}/libs`));
+
+	return gulp.src(['./systemjs.config.js'])
+			.pipe(gulp.dest(`${DIST_DIR}`));
 });
 
 gulp.task('copy:app_assets', function() {
@@ -62,28 +64,28 @@ gulp.task('copy:app_assets', function() {
 		.pipe(less({
 			plugins: [cleancss]
 		}))
-		.pipe(gulp.dest('public/app'));
+		.pipe(gulp.dest(`${DIST_DIR}/app`));
 
 	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
-		.pipe(gulp.dest('public/app'))
+		.pipe(gulp.dest(`${DIST_DIR}/app`))
 });
 
 gulp.task('copy:assets', function() {
 	gulp.src(['src/assets/css/**/*.css'])
 		.pipe(cleanCSS())
-		.pipe(gulp.dest('public/css'));
+		.pipe(gulp.dest(`${DIST_DIR}/css`));
 
 	gulp.src(['src/assets/less/**/*.less'])
 		.pipe(less({
 			paths: [path.join(__dirname, 'less', 'includes')],
 			plugins: [cleancss]
 		}))
-		.pipe(gulp.dest('public/css'));
+		.pipe(gulp.dest(`${DIST_DIR}/css`));
 });
 
 gulp.task('copy:index', function() {
 	return gulp.src(['src/index.html'])
-		.pipe(gulp.dest('public'))
+		.pipe(gulp.dest(`${DIST_DIR}`))
 });
 
 gulp.task('watch', ['build'], function() {
@@ -97,5 +99,5 @@ gulp.task('watch', ['build'], function() {
 
 });
 
-gulp.task('build', ['compile', 'copy:libs', 'copy:app_assets', 'copy:index', 'copy:assets']);
+gulp.task('build', ['compile', 'copy:app_assets', 'copy:assets']);
 gulp.task('default', ['build']);
