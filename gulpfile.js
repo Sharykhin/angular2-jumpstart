@@ -17,6 +17,7 @@ const cleanCSS = require('gulp-clean-css');
 const ENV = process.env.NODE_ENV;
 const DEV_ENV = ENV !== 'production';
 const DIST_DIR = '.';
+const DEV_DIR = 'src';
 
 // clean the contents of the distribution directory
 gulp.task('clean', function() {
@@ -32,9 +33,9 @@ gulp.task('tsconfig-glob', function() {
 });
 
 // TypeScript compile
-gulp.task('compile', ['tslint'], function() {
+gulp.task('compile', [], function() {
 	return gulp
-		.src('src/app/**/*.ts')
+		.src(`${DEV_DIR}/app/**/*.ts`)
 		.pipe(gulpif(DEV_ENV, sourcemaps.init())) // <--- sourcemaps
 		.pipe(typescript(tscConfig.compilerOptions))
 		.pipe(gulpif(DEV_ENV, sourcemaps.write('.'))) // <--- sourcemaps
@@ -42,9 +43,13 @@ gulp.task('compile', ['tslint'], function() {
 });
 
 gulp.task('tslint', function() {
-	return gulp.src(`src/app/**/*.ts`)
-		.pipe(tslint())
-		.pipe(tslint.report('verbose'));
+	return gulp.src(`${DEV_DIR}/app/**/*.ts`)
+		.pipe(tslint({
+			formatter: "prose"
+		}))
+		.pipe(tslint.report({
+			emitError: false
+		}));
 });
 
 gulp.task('copy:libs', function() {
@@ -61,22 +66,22 @@ gulp.task('copy:libs', function() {
 });
 
 gulp.task('copy:app_assets', function() {
-	gulp.src(['src/app/**/*.less'])
+	gulp.src([`${DEV_DIR}/app/**/*.less`])
 		.pipe(less({
 			plugins: [cleancss]
 		}))
 		.pipe(gulp.dest(`${DIST_DIR}/app`));
 
-	return gulp.src(['src/app/**/*.html', 'src/app/**/*.css'])
+	return gulp.src([`${DEV_DIR}/app/**/*.html`, `${DEV_DIR}/app/**/*.css`])
 		.pipe(gulp.dest(`${DIST_DIR}/app`))
 });
 
 gulp.task('copy:assets', function() {
-	gulp.src(['src/assets/css/**/*.css'])
+	gulp.src([`${DEV_DIR}/assets/css/**/*.css`])
 		.pipe(cleanCSS())
 		.pipe(gulp.dest(`${DIST_DIR}/css`));
 
-	gulp.src(['src/assets/less/**/*.less'])
+	gulp.src([`${DEV_DIR}/assets/less/**/*.less`])
 		.pipe(less({
 			paths: [path.join(__dirname, 'less', 'includes')],
 			plugins: [cleancss]
@@ -90,13 +95,12 @@ gulp.task('copy:index', function() {
 });
 
 gulp.task('watch', ['build'], function() {
-	gulp.watch(['index.html'], ['copy:index']);
 
-	gulp.watch(['app/**/*.html', 'app/**/*.css', 'app/**/*.less'], ['copy:app_assets']);
+	gulp.watch([`${DEV_DIR}/app/**/*.html`, `${DEV_DIR}/app/**/*.css`, `${DEV_DIR}/app/**/*.less`], ['copy:app_assets']);
 
-	gulp.watch(['assets/**/*.css', 'app/**/*.less'], ['copy:assets']);
+	gulp.watch([`${DEV_DIR}/assets/**/*.css`, `${DEV_DIR}/assets/**/*.less`], ['copy:assets']);
 
-	gulp.watch(['app/**/*.ts'], ['compile']);
+	gulp.watch([`${DEV_DIR}/app/**/*.ts`], ['compile']);
 
 });
 

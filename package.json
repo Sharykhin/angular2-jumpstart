@@ -5,9 +5,9 @@
     "postinstall": "npm run typings install",
     "tslint": "tslint -c tslint.json src/app/**/*.ts",
     "serve": "lite-server",
-    "start": "concurrent \"rm -rf public/*\" \"gulp build\" \"gulp watch\" ",
+    "start": "concurrent \"rm -rf ./css\"  \"rm -rf ./app \" \"gulp build\" \"gulp watch\" ",
     "typings": "typings",
-    "build": "concurrent \"rm -rf public/*\" \"gulp build\" "
+    "build": "concurrent \"rm -rf ./css\" \"rm -rf ./app \" \"gulp build\" "
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",

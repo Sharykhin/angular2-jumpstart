@@ -13,6 +13,9 @@ var AboutComponent = (function () {
     function AboutComponent() {
         console.log('AboutComponent: constructor');
     }
+    AboutComponent.prototype.ngOnInit = function () {
+        console.log('AboutComponent: Method ngOnInit');
+    };
     AboutComponent = __decorate([
         core_1.Component({
             selector: 'about',
