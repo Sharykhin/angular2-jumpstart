@@ -9,23 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        console.log('AppComponent: constructor');
+var FooterFaceComponent = (function () {
+    function FooterFaceComponent() {
+        console.log('FooterFaceComponent: constructor');
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log('AppComponent: Method ngOnInit');
-    };
-    AppComponent = __decorate([
+    FooterFaceComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: '/app/components/app/app.component.html',
-            styleUrls: ['/app/components/app/app.component.css']
+            selector: 'footer-face',
+            templateUrl: '/app/modules/user/components/footer-face/footer-face.component.html',
+            styleUrls: ['/app/modules/user/components/footer-face/footer-face.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], FooterFaceComponent);
+    return FooterFaceComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.FooterFaceComponent = FooterFaceComponent;
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=footer-face.component.js.map

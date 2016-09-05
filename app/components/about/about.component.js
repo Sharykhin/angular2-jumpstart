@@ -9,20 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var user_api_service_1 = require('./../../modules/user/services/user-api.service');
 var AboutComponent = (function () {
-    function AboutComponent() {
+    function AboutComponent(userApiService) {
+        this.userApiService = userApiService;
         console.log('AboutComponent: constructor');
     }
     AboutComponent.prototype.ngOnInit = function () {
         console.log('AboutComponent: Method ngOnInit');
+        this.userApiService.getUser(12);
     };
     AboutComponent = __decorate([
         core_1.Component({
             selector: 'about',
             templateUrl: '/app/components/about/about.component.html',
-            styleUrls: ['/app/components/about/about.component.css']
+            styleUrls: [require('./about.component.css')]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [user_api_service_1.UserApiService])
     ], AboutComponent);
     return AboutComponent;
 }());

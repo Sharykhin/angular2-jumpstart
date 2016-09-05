@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        console.log('AppComponent: constructor');
+var UserApiService = (function () {
+    function UserApiService() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log('AppComponent: Method ngOnInit');
+    UserApiService.prototype.getUser = function (id) {
+        console.log("UserApiService: make api request to get user with ID: " + id + ".");
     };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'app',
-            templateUrl: '/app/components/app/app.component.html',
-            styleUrls: ['/app/components/app/app.component.css']
-        }), 
+    UserApiService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], UserApiService);
+    return UserApiService;
 }());
-exports.AppComponent = AppComponent;
+exports.UserApiService = UserApiService;
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=user-api.service.js.map

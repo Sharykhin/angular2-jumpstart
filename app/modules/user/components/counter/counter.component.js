@@ -9,23 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        console.log('AppComponent: constructor');
+var CounterComponent = (function () {
+    function CounterComponent() {
+        console.log('CounterComponent: constructor');
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log('AppComponent: Method ngOnInit');
-    };
-    AppComponent = __decorate([
+    CounterComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: '/app/components/app/app.component.html',
-            styleUrls: ['/app/components/app/app.component.css']
+            selector: 'counter',
+            templateUrl: '/app/modules/user/components/counter/counter.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CounterComponent);
+    return CounterComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.CounterComponent = CounterComponent;
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=counter.component.js.map

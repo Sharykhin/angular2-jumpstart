@@ -9,23 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        console.log('AppComponent: constructor');
+var user_api_service_1 = require('./services/user-api.service');
+var counter_component_1 = require('./components/counter/counter.component');
+var UserModule = (function () {
+    function UserModule() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log('AppComponent: Method ngOnInit');
-    };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'app',
-            templateUrl: '/app/components/app/app.component.html',
-            styleUrls: ['/app/components/app/app.component.css']
+    UserModule = __decorate([
+        core_1.NgModule({
+            imports: [],
+            declarations: [
+                counter_component_1.CounterComponent
+            ],
+            providers: [
+                user_api_service_1.UserApiService
+            ],
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], UserModule);
+    return UserModule;
 }());
-exports.AppComponent = AppComponent;
+exports.UserModule = UserModule;
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=user.module.js.map
