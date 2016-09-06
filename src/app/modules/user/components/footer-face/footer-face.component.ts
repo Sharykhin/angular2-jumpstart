@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
     styleUrls: ['app/modules/user/components/footer-face/footer-face.component.css']
 })
 export class FooterFaceComponent {
-    
     constructor() {
         console.log('FooterFaceComponent: constructor');
     }
 }
+
