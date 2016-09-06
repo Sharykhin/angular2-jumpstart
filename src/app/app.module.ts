@@ -6,14 +6,12 @@ import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
 import { AboutComponent }  from './components/about/about.component';
 
-import { FooterFaceComponent } from './modules/user/components/footer-face/footer-face.component';
-
 import { routing, appRoutingProviders } from './components/app/app.routing';
 
 
 @NgModule({
     imports:      [ BrowserModule, routing, UserModule],
-    declarations: [ AppComponent, HomeComponent, AboutComponent, FooterFaceComponent],
+    declarations: [ AppComponent, HomeComponent, AboutComponent],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders

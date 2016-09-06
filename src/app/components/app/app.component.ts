@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FooterFaceComponent } from './../../modules/user/components/footer-face/footer-face.component';
-
 @Component({
 	selector: 'app',
 	templateUrl: '/app/components/app/app.component.html',
