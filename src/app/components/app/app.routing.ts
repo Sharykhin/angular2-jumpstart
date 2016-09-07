@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './../home/home.component';
-import {AboutComponent} from './../about/about.component';
+//import {AboutComponent} from './../about/about.component';
 import { ModuleWithProviders } from '@angular/core';
 
 const appRoutes: Routes = [
@@ -14,7 +14,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'about',
-        component: AboutComponent
+        loadChildren: '/app/components/about/about.module'
+        //component: AboutComponent
     }
 ];
 

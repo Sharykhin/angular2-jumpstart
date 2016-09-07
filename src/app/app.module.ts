@@ -4,14 +4,13 @@ import { UserModule } from './modules/user/user.module';
 
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
-import { AboutComponent }  from './components/about/about.component';
 
 import { routing, appRoutingProviders } from './components/app/app.routing';
 
 
 @NgModule({
     imports:      [ BrowserModule, routing, UserModule],
-    declarations: [ AppComponent, HomeComponent, AboutComponent],
+    declarations: [ AppComponent, HomeComponent],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders
