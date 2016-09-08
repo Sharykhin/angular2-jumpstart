@@ -1,6 +1,8 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { UserModule } from './modules/user/user.module';
+
+import { PupilModule } from './modules/pupil/pupil.module';
+
 import { HttpModule } from '@angular/http';
 
 import { HomeComponent } from './components/home/home.component';
@@ -12,8 +14,8 @@ import { PupilApiService } from './services/pupil-api.service';
 
 
 @NgModule({
-    imports:      [ BrowserModule, routing, UserModule, HttpModule ],
-    declarations: [ AppComponent, HomeComponent],
+    imports:      [ BrowserModule, routing, HttpModule, PupilModule ],
+    declarations: [ AppComponent, HomeComponent ],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders,
