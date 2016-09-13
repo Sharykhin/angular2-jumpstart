@@ -10,16 +10,12 @@ import { AppComponent }  from './components/app/app.component';
 
 import { routing, appRoutingProviders } from './app.routing';
 
-import { PupilApiService } from './services/pupil-api.service';
-
-
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule, PupilModule ],
     declarations: [ AppComponent, HomeComponent ],
     bootstrap:    [ AppComponent ],
     providers: [
-        appRoutingProviders,
-        PupilApiService,
+        appRoutingProviders,       
         { provide: 'ApiEndpoint', useValue: 'http://localhost:5000' }
     ]
 })
