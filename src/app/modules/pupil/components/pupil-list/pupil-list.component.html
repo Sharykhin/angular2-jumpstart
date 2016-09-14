@@ -1,0 +1,7 @@
+<h2>Pupil list</h2>
+<div class="row">
+	<pupil *ngFor="let pupil of pupils" (onDeleted)="onDelete($event)" [pupil]="pupil"></pupil>
+</div>
+<div>
+	<a [routerLink]="['/pupils/new']" class="btn btn-primary btn-lg">Create a new Pupil</a>
+</div>
