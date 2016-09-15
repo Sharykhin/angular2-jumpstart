@@ -26,4 +26,10 @@ export class PupilApiService implements PupilApiInterface {
             .map((res: Response) => res.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
+
+    public removePupil(id: string): Observable<boolean> {
+        return this.http.delete(`${this.apiEndPoint}/pupils/${id}`)
+                .map((res: Response) => res.json().count === 1)
+                .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
 }

@@ -8,7 +8,8 @@ import { PupilApiInterface } from './../../interfaces/services/pupil-api.interfa
 
 @Component({
 	selector: 'pupil-profile',
-	templateUrl: '/app/modules/pupil/components/pupil-profile/pupil-profile.component.html'
+	templateUrl: '/app/modules/pupil/components/pupil-profile/pupil-profile.component.html',
+	styleUrls: ['app/modules/pupil/components/pupil-profile/pupil-profile.component.css']
 })
 export class PupilProfileComponent implements OnInit {
 
