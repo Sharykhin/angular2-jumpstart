@@ -20,4 +20,10 @@ export class PupilApiService implements PupilApiInterface {
             .map((res: Response) => res.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
+
+    public getPupil(id: string): Observable<PupilInterface> {
+        return this.http.get(`${this.apiEndPoint}/pupils/${id}`)
+            .map((res: Response) => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
 }
