@@ -1,5 +1,6 @@
 import { NgModule }  from '@angular/core';
 import { CommonModule }   from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 
 import { PupilComponent } from './components/pupil/pupil.component';
 import { PupilListComponent } from './components/pupil-list/pupil-list.component';
@@ -12,7 +13,7 @@ import { PupilApiService } from './services/pupil-api.service';
 import { routing } from './pupil.routing';
 
 @NgModule({
-    imports:      [ routing, CommonModule ], 
+    imports:      [ routing, CommonModule, FormsModule ], 
     declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent ],
     providers:    [
         { provide: 'PupilApiInterface', useClass: PupilApiService }
