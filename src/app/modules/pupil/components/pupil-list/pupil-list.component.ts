@@ -19,6 +19,14 @@ export class PupilListComponent implements OnInit {
 
 	onDelete(pupil: PupilInterface) {
 		console.log('pupil should be removed', pupil);
+		if(confirm('Are you sure?')) {
+			this.pupilApiService.removePupil(pupil.id)
+			.subscribe( success => {
+				if (success) {
+					this.pupils.splice(this.pupils.indexOf(pupil), 1)		
+				}				
+			});
+		}		
 	}
 
 	ngOnInit() {

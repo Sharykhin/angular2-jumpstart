@@ -13,8 +13,8 @@ const pupilRoutes: Routes = [
 		component: PupilSectionComponent,
 		children: [
 			{ path: '', component: PupilListComponent },
-			{ path: ':id', component: PupilProfileComponent },
-			{ path: 'new', component: CreatePupilComponent}
+			{ path: 'new', component: CreatePupilComponent},
+			{ path: ':id', component: PupilProfileComponent }
 		]
 	}
 ];
