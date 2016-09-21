@@ -6,6 +6,8 @@ import { PupilProfileComponent } from './components/pupil-profile/pupil-profile.
 import { PupilListComponent } from './components/pupil-list/pupil-list.component';
 import { PupilSectionComponent } from './components/pupil-section/pupil-section.component';
 import { CreatePupilComponent } from './components/create-pupil/create-pupil.component';
+import { CanActivateViaAuthGuard } from './../../guards/can-activate-via-auth.guard';
+import { ConfirmDeactivateGuard }    from './guards/confirm-deactivate.guard';
 
 const pupilRoutes: Routes = [
 	{
@@ -13,7 +15,7 @@ const pupilRoutes: Routes = [
 		component: PupilSectionComponent,
 		children: [
 			{ path: '', component: PupilListComponent },
-			{ path: 'new', component: CreatePupilComponent},
+			{ path: 'new', component: CreatePupilComponent, canActivate: [ CanActivateViaAuthGuard ], canDeactivate: [ ConfirmDeactivateGuard ]},
 			{ path: ':id', component: PupilProfileComponent }
 		]
 	}

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
         loadChildren: '/app/modules/about/about.module'
     },
     {
-        path: 'pupils',        
+        path: 'pupils',
         loadChildren: '/app/modules/pupil/pupil.module#PupilModule'
     }
 ];
