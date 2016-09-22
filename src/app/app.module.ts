@@ -13,6 +13,8 @@ import { CanActivateViaAuthGuard } from './guards/can-activate-via-auth.guard';
 
 import { routing, appRoutingProviders } from './app.routing';
 
+declare var EventEmitter: any
+
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule ],
     declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
@@ -22,7 +24,8 @@ import { routing, appRoutingProviders } from './app.routing';
         { provide: 'ApiEndpoint', useValue: 'http://localhost:5000' },
         { provide: 'CanAlwaysActivateGuard', useValue: () => { return false; }},
         AuthService,
-        CanActivateViaAuthGuard
+        CanActivateViaAuthGuard,
+        { provide: 'MyEventEmitter', useClass: EventEmitter }
     ]
 })
 export class AppModule { }
