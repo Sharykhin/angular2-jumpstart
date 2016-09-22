@@ -13,7 +13,7 @@ import { CanActivateViaAuthGuard } from './guards/can-activate-via-auth.guard';
 
 import { routing, appRoutingProviders } from './app.routing';
 
-declare var EventEmitter: any
+declare var EventEmitter: any;
 
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule ],
