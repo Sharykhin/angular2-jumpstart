@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Host } from '@angular/core';
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
@@ -12,7 +12,7 @@ export class PupilListComponent implements OnInit {
 	pupils: PupilInterface[];
 
 	constructor(
-		@Inject('PupilApiInterface') private pupilApiService: PupilApiInterface
+		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface
 		) {
 		console.log('PupilListComponent: constructor');
 	}

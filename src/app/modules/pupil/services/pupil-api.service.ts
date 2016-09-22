@@ -24,7 +24,7 @@ export class PupilApiService implements PupilApiInterface {
     public getPupil(id: string): Observable<PupilInterface> {
         return this.http.get(`${this.apiEndPoint}/pupils/${id}`)
             .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+            .catch((error: any) => Observable.throw(error.json()));
     }
 
     public removePupil(id: string): Observable<boolean> {
@@ -40,6 +40,16 @@ export class PupilApiService implements PupilApiInterface {
         
         return this.http.post(`${this.apiEndPoint}/pupils`, body, options)
                 .map((res: Response) => res.json())
-                .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+                .catch((error: any) =>  { console.error(error); return Observable.throw(error.json().error || 'Server error'); });
+    }
+
+    public updatePupil(id: string, pupil: PupilInterface): Observable<PupilInterface> {
+        let body = JSON.stringify(pupil);
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.put(`${this.apiEndPoint}/pupils/${id}`, body, options)
+            .map((res: Response) => res.json())
+            .catch((error: any) => { console.error(error); return Observable.throw(error.json().error || 'Server error'); });
     }
 }

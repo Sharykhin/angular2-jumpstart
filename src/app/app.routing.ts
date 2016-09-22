@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import {HomeComponent} from './components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 import { ModuleWithProviders } from '@angular/core';
 
@@ -15,8 +16,12 @@ const appRoutes: Routes = [
         loadChildren: '/app/modules/about/about.module'
     },
     {
-        path: 'pupils',        
+        path: 'pupils',
         loadChildren: '/app/modules/pupil/pupil.module#PupilModule'
+    },
+    { 
+        path: '**', 
+        component: NotFoundComponent 
     }
 ];
 
