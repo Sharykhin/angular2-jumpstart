@@ -1,14 +1,16 @@
+import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 import { PupilFormComponent } from './../components/pupil-form/pupil-form.component';
+import { Observable }    from 'rxjs/Observable';
 
-export class ConfirmDeactivateGuard implements CanDeactivate<PupilFormComponent> {
+export interface CanComponentDeactivate {
+ canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
+}
 
-	canDeactivate(component: PupilFormComponent) {
-		console.log(component, arguments);
-		//component.canDeactivate();
-		/*if (component.hasChanges()) {
-			return window.confirm('Do you realy want to cancel?');
-		}*/
-		return false;
+@Injectable()
+export class ConfirmDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
+
+	canDeactivate(component: CanComponentDeactivate) {
+		return component.canDeactivate ? component.canDeactivate() : true;
 	}
 }

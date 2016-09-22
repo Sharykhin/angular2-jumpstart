@@ -9,4 +9,6 @@ export interface PupilApiInterface {
     removePupil(id: string): Observable<boolean>
 
     createPupil(pupil: PupilInterface): Observable<PupilInterface>;
+
+    updatePupil(id: string, pupil: PupilInterface): Observable<PupilInterface>;
 }

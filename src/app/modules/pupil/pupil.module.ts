@@ -9,16 +9,19 @@ import { PupilSectionComponent } from './components/pupil-section/pupil-section.
 import { CreatePupilComponent } from './components/create-pupil/create-pupil.component';
 import { PupilFormComponent } from './components/pupil-form/pupil-form.component';
 import { ConfirmDeactivateGuard } from './guards/confirm-deactivate.guard';
+import { PupilEditComponent } from './components/pupil-edit/pupil-edit.component';
+import { PupilResolveService } from './services/pupil-resolve.service';
 
 import { PupilApiService } from './services/pupil-api.service';
 import { routing } from './pupil.routing';
 
 @NgModule({
     imports:      [ routing, CommonModule, FormsModule, ReactiveFormsModule ], 
-    declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent ],
+    declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent, PupilEditComponent ],
     providers:    [
         { provide: 'PupilApiInterface', useClass: PupilApiService },
-        ConfirmDeactivateGuard
+        ConfirmDeactivateGuard,
+        PupilResolveService
     ],
     exports: []
 })

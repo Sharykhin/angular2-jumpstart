@@ -1,2 +1,2 @@
 <h2>Create a new Pupil</h2> 
-<pupil-form [pupil]="pupil" (onSubmitted)="onCreate($event)"></pupil-form>
+<pupil-form [pupil]="pupil" (isDirty)="isFormDirty($event)" (onSubmitted)="onCreate($event)"></pupil-form>
