@@ -20,7 +20,7 @@ export class PupilResolveService implements Resolve<PupilInterface> {
 							pupil => { observer.next(pupil); observer.complete(); },
 							error => { 
 								if (error.status === 404) {
-									this.router.navigate(['/pupils']);
+									this.router.navigate(['/**']);
 								} 
 							}
 							);

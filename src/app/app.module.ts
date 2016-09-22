@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 import { AuthService } from './services/auth.service';
 import { CanActivateViaAuthGuard } from './guards/can-activate-via-auth.guard';
 
@@ -13,7 +15,7 @@ import { routing, appRoutingProviders } from './app.routing';
 
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule ],
-    declarations: [ AppComponent, HomeComponent ],
+    declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders,       
