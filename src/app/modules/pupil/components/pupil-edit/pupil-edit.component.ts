@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Host } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,7 +17,7 @@ export class PupilEditComponent implements OnInit {
 	private formDirty: boolean = false;
 
 	constructor(
-		@Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
+		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
 		private route: ActivatedRoute,
 		private router: Router) {
 		console.log('PupilEditComponent: construct');

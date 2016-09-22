@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
 
@@ -26,9 +26,12 @@ export class PupilFormComponent implements OnInit, AfterViewInit {
 	ngOnInit() {
 		console.log(this.pupil);
 		this.pupilForm = this.formBuilder.group({
-			'name': [this.pupil.name, Validators.required],
+			'name': [this.pupil.name, Validators.compose([
+				Validators.required,
+				this.pupilNameValidator
+				])],
 			'className': [this.pupil.className],
-			'level': [this.pupil.level]
+			'level': [this.pupil.level, this.pupulLevelMax]
 		});		
 	}
 
@@ -44,5 +47,17 @@ export class PupilFormComponent implements OnInit, AfterViewInit {
 		console.log(value);		
 		console.log(this.pupil);
 		this.onSubmitted.emit(value);
+	}
+
+	pupilNameValidator(control: FormControl): { [s: string]: boolean } {
+		if (control.value && control.value.length < 3) {
+			return { invalidPupilName: true };
+		}
+	}
+
+	pupulLevelMax(control: FormControl): { [s: string]: boolean } {
+		if (control.value && +control.value > 10 ) {
+			return { invaliPupilLevel: true }
+		}
 	}
 }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Host } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
@@ -19,7 +19,7 @@ export class CreatePupilComponent implements CanComponentDeactivate {
     private formDirty: boolean = false;
 
     constructor(
-        @Inject('PupilApiInterface') private pupilApiInterface: PupilApiInterface,
+        @Host() @Inject('PupilApiInterface') private pupilApiInterface: PupilApiInterface,
         private router: Router
     ) {
         console.log('CreatePupilComponent: constructor');
