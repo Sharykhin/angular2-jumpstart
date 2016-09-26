@@ -10,20 +10,19 @@ import { PupilInterface } from './../../modules/pupil/interfaces/models/pupil.in
 })
 export class NotificationComponent implements OnDestroy, OnInit {
 
-	pupilCounter = 0;
+	pupilCounter: number = 0;
 
 	constructor(private _ee: PupilListener) {}
 
 	ngOnDestroy() {
-		this._ee.removeListener(this._ee.PUPIL_CREATED, this.updatePupilCounter);
+		this._ee.removeListener(this._ee.PUPIL_CREATED, this.updatePupilCounter.bind(this));
 	}
 
 	ngOnInit() {
-		this._ee.addListener(this._ee.PUPIL_CREATED, this.updatePupilCounter);
-
+		this._ee.addListener(this._ee.PUPIL_CREATED, this.updatePupilCounter.bind(this));
 	}
 
-	private	updatePupilCounter(pupil: PupilInterface) {
-		this.pupilCounter++;
+	private	updatePupilCounter(pupil: PupilInterface) {		
+		this.pupilCounter++;		
 	}
 }

@@ -17,15 +17,15 @@ export class PupilSearchComponent {
 	onSearch = new EventEmitter<any>();
 
 	constructor(
-		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
-		@Inject('MyEventEmitter') private ee
+		@Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
+		@Inject('MyEventEmitter') private _ee
 		) {
 
 		this.term.valueChanges
 			.debounceTime(500)
 			.switchMap(term => this.pupilApiService.search(term))
 			.subscribe(pupils => {
-				this.ee.emitEvent('SEARCH', [pupils]);
+				this._ee.emitEvent('SEARCH', [pupils]);
 			});
 	}	
 }

@@ -31,7 +31,7 @@ declare var EventEmitter: any;
         { provide: 'MyEventEmitter', useClass: EventEmitter },
         {
             provide: PupilListener, useFactory: () => {
-                console.log('use factory');
+                console.log('use factory to create a new instance of PupilListener');
                 return new PupilListener();
             }
         }
