@@ -15,7 +15,7 @@ import { PupilListener } from './listeners/pupil.listener';
 
 import { routing, appRoutingProviders } from './app.routing';
 
-declare var EventEmitter: any
+declare var EventEmitter: any;
 
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule ],

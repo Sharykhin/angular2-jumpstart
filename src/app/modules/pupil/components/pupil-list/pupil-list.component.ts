@@ -12,9 +12,13 @@ export class PupilListComponent implements OnInit {
 	pupils: PupilInterface[];
 
 	constructor(
-		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface
+		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
+		@Inject('MyEventEmitter') private _ee
 		) {
 		console.log('PupilListComponent: constructor');
+		this._ee.on('SEARCH', (pupils: PupilInterface[]) => {
+            this.pupils = pupils;
+		});
 	}
 
 	onDelete(pupil: PupilInterface) {
