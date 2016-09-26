@@ -6,6 +6,7 @@ import { PupilInterface } from './../../interfaces/models/pupil.interface';
 import { PupilModel } from './../../models/pupil.model';
 import { CanComponentDeactivate } from './../../guards/confirm-deactivate.guard';
 import { Observable }    from 'rxjs/Observable';
+import { PupilListener } from './../../../../listeners/pupil.listener';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class CreatePupilComponent implements CanComponentDeactivate {
 
     constructor(
         @Host() @Inject('PupilApiInterface') private pupilApiInterface: PupilApiInterface,
-        private router: Router
+        private router: Router,
+        private _ee: PupilListener
     ) {
         console.log('CreatePupilComponent: constructor');
         this.pupil = new PupilModel();        
@@ -29,8 +31,9 @@ export class CreatePupilComponent implements CanComponentDeactivate {
     onCreate(pupil: PupilInterface) {
     	console.log('Does model equal to income data: ', pupil === this.pupil);
     	this.pupilApiInterface.createPupil(pupil).subscribe(data => { 
-            this.formDirty = false; 
-            this.router.navigate(['/pupils']); 
+            this.formDirty = false;
+            this._ee.onPupilCreated(data);
+            this.router.navigate(['/pupils']);            
         });
     }
 

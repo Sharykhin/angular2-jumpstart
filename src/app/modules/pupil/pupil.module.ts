@@ -20,6 +20,7 @@ import { routing } from './pupil.routing';
     imports:      [ routing, CommonModule, FormsModule, ReactiveFormsModule ], 
     declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent, PupilEditComponent, PupilSearchComponent ],
     providers:    [
+    	{ provide: 'ApiEndpoint', useValue: 'http://localhost:5000' },
         { provide: 'PupilApiInterface', useClass: PupilApiService },
         ConfirmDeactivateGuard,
         PupilResolveService
