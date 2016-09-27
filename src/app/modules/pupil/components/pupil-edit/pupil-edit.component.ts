@@ -37,7 +37,7 @@ export class PupilEditComponent implements OnInit {
 		this.pupilApiService.updatePupil(this.pupil.id, pupil)
 			.subscribe(pupil => {
 				this.formDirty = false;
-				this.router.navigate(['/pupils']) 
+				this.router.navigate(['/pupils']);
 			});
 	}
 

@@ -11,18 +11,28 @@ import { PupilFormComponent } from './components/pupil-form/pupil-form.component
 import { ConfirmDeactivateGuard } from './guards/confirm-deactivate.guard';
 import { PupilEditComponent } from './components/pupil-edit/pupil-edit.component';
 import { PupilResolveService } from './services/pupil-resolve.service';
+import { PupilSearchComponent } from './components/pupil-search/pupil-search.component';
+import { PupilListener } from './listeners/pupil.listener';
 
 import { PupilApiService } from './services/pupil-api.service';
 import { routing } from './pupil.routing';
 
 @NgModule({
     imports:      [ routing, CommonModule, FormsModule, ReactiveFormsModule ], 
-    declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent, PupilEditComponent ],
+    declarations: [ PupilComponent, PupilSectionComponent, PupilListComponent, PupilProfileComponent, CreatePupilComponent, PupilFormComponent, PupilEditComponent, PupilSearchComponent ],
     providers:    [
+    	{ provide: 'ApiEndpoint', useValue: 'http://localhost:5000' },
         { provide: 'PupilApiInterface', useClass: PupilApiService },
         ConfirmDeactivateGuard,
-        PupilResolveService
+        PupilResolveService,
+        PupilListener
+        /*{
+            provide: PupilListener, useFactory: () => {
+                console.log('use factory to create a new instance of PupilListener');
+                return new PupilListener();
+            }
+        }*/
     ],
-    exports: []
+    exports: [ ]
 })
 export class PupilModule { }

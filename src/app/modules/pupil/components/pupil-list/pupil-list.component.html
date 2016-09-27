@@ -1,5 +1,8 @@
 <h2>Pupil list</h2>
 <div class="row">
+	<pupil-search></pupil-search>
+</div>
+<div class="row">
 	<pupil *ngFor="let pupil of pupils" (onDeleted)="onDelete($event)" [pupil]="pupil"></pupil>
 </div>
 <div>

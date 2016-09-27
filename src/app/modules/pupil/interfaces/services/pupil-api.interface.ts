@@ -11,4 +11,6 @@ export interface PupilApiInterface {
     createPupil(pupil: PupilInterface): Observable<PupilInterface>;
 
     updatePupil(id: string, pupil: PupilInterface): Observable<PupilInterface>;
+
+    search(value: string): Observable<PupilInterface[]>
 }

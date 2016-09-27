@@ -52,4 +52,11 @@ export class PupilApiService implements PupilApiInterface {
             .map((res: Response) => res.json())
             .catch((error: any) => { console.error(error); return Observable.throw(error.json().error || 'Server error'); });
     }
+
+    public search(value: string): Observable<PupilInterface[]> {
+        var query = `{"name":{"$regex":"${value}","$options":"i"}}`;
+        return this.http.get(`${this.apiEndPoint}/pupils?${query}`)
+            .map((res: Response) => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
 }
