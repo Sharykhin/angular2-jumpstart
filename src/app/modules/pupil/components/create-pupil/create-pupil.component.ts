@@ -6,7 +6,7 @@ import { PupilInterface } from './../../interfaces/models/pupil.interface';
 import { PupilModel } from './../../models/pupil.model';
 import { CanComponentDeactivate } from './../../guards/confirm-deactivate.guard';
 import { Observable }    from 'rxjs/Observable';
-import { PupilListener } from './../../../../listeners/pupil.listener';
+import { PupilListener } from './../../listeners/pupil.listener';
 
 
 @Component({

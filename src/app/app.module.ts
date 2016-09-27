@@ -11,7 +11,6 @@ import { NotificationComponent } from './components/notification/notification.co
 
 import { AuthService } from './services/auth.service';
 import { CanActivateViaAuthGuard } from './guards/can-activate-via-auth.guard';
-import { PupilListener } from './listeners/pupil.listener';
 
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -28,13 +27,7 @@ declare var EventEmitter: any;
         { provide: 'CanAlwaysActivateGuard', useValue: () => { return false; }},
         AuthService,
         CanActivateViaAuthGuard,
-        { provide: 'MyEventEmitter', useClass: EventEmitter },
-        {
-            provide: PupilListener, useFactory: () => {
-                console.log('use factory to create a new instance of PupilListener');
-                return new PupilListener();
-            }
-        }
+        { provide: 'MyEventEmitter', useClass: EventEmitter }
     ]
 })
 export class AppModule { }

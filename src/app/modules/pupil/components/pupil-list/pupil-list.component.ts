@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Host } from '@angular/core';
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
+import { PupilListener } from './../../listeners/pupil.listener';
 
 @Component({
 	selector: 'pupil-list',
@@ -12,10 +13,12 @@ export class PupilListComponent implements OnInit {
 	pupils: PupilInterface[];
 
 	constructor(
+		private _ee2: PupilListener,
 		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
-		@Inject('MyEventEmitter') private _ee
+		@Inject('MyEventEmitter') private _ee		
 		) {
 		console.log('PupilListComponent: constructor');
+		console.log(this._ee2);	
 		this._ee.on('SEARCH', (pupils: PupilInterface[]) => {
             this.pupils = pupils;
 		});
@@ -27,7 +30,8 @@ export class PupilListComponent implements OnInit {
 			this.pupilApiService.removePupil(pupil.id)
 			.subscribe( success => {
 				if (success) {
-					this.pupils.splice(this.pupils.indexOf(pupil), 1)		
+					this.pupils.splice(this.pupils.indexOf(pupil), 1);
+					this._ee2.onPupilDeleted(pupil);		
 				}				
 			});
 		}		
