@@ -9,12 +9,12 @@ import { PupilInterface } from './../interfaces/models/pupil.interface';
 @Injectable()
 export class PupilListener extends EventEmitter {	
 	
-	//static instance: MyStaticService;
+	static instance: PupilListener;
 
-	/*constructor() {
+	constructor() {
 		super();
-	    return MyStaticService.instance = MyStaticService.instance || this;
-	}*/
+	    return PupilListener.instance = PupilListener.instance || this;
+	}
 
 	get PUPIL_CREATED() {		
 		return PUPIL_CREATED;
