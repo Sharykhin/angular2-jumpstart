@@ -1,8 +1,11 @@
-import { Component, Inject, Host, EventEmitter } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { FormControl } from '@angular/forms'
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
+import { PupilSearchListenerInterface } from './../../interfaces/listeners/pupil-search-listener.interface';
+import { PupilSearchListener } from './../../listeners/pupil-search.listener';
+import { PupilApiService } from './../../services/pupil-api.service';
 
 @Component({
 	selector: 'pupil-search',
@@ -12,20 +15,19 @@ import { PupilInterface } from './../../interfaces/models/pupil.interface';
 export class PupilSearchComponent {
 
 	pupils: Array<PupilInterface>;
+
 	term = new FormControl();	
 
-	onSearch = new EventEmitter<any>();
-
 	constructor(
-		@Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
-		@Inject('MyEventEmitter') private _ee
+		@Inject(PupilApiService) private pupilApiService: PupilApiInterface,
+		@Inject(PupilSearchListener) private _searchEventEmitter: PupilSearchListenerInterface
 		) {
 
 		this.term.valueChanges
 			.debounceTime(500)
 			.switchMap(term => this.pupilApiService.search(term))
 			.subscribe(pupils => {
-				this._ee.emitEvent('SEARCH', [pupils]);
+				this._searchEventEmitter.onSearch(pupils);
 			});
 	}	
 }

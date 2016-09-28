@@ -13,6 +13,7 @@ import { PupilEditComponent } from './components/pupil-edit/pupil-edit.component
 import { PupilResolveService } from './services/pupil-resolve.service';
 import { PupilSearchComponent } from './components/pupil-search/pupil-search.component';
 import { PupilListener } from './listeners/pupil.listener';
+import { PupilSearchListener } from './listeners/pupil-search.listener';
 
 import { PupilApiService } from './services/pupil-api.service';
 import { routing } from './pupil.routing';
@@ -26,6 +27,7 @@ import { routing } from './pupil.routing';
         ConfirmDeactivateGuard,
         PupilResolveService,
         PupilListener,
+        PupilSearchListener,
         PupilApiService
         /*{
             provide: PupilListener, useFactory: () => {

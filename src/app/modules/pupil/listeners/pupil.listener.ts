@@ -14,7 +14,7 @@ export class PupilListener extends EventEmitter implements PupilListenerInterfac
 
 	constructor() {
 		super();
-	   return PupilListener.instance = PupilListener.instance || this;
+	   	return PupilListener.instance = PupilListener.instance || this;
 	}
 
 	get PUPIL_CREATED() {		
