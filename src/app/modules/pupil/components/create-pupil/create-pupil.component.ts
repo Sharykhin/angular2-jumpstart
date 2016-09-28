@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
+import { PupilApiService } from './../../services/pupil-api.service';
 import { PupilModel } from './../../models/pupil.model';
 import { CanComponentDeactivate } from './../../guards/confirm-deactivate.guard';
 import { Observable }    from 'rxjs/Observable';
 import { PupilListener } from './../../listeners/pupil.listener';
-
+import { PupilListenerInterface } from './../../interfaces/listeners/pupil-listener.interface';
 
 @Component({
     selector: 'create-pupil',
@@ -20,9 +21,9 @@ export class CreatePupilComponent implements CanComponentDeactivate {
     private formDirty: boolean = false;
 
     constructor(
-        @Host() @Inject('PupilApiInterface') private pupilApiInterface: PupilApiInterface,
-        private router: Router,
-        private _ee: PupilListener
+        @Host() @Inject(PupilApiService) private pupilApiInterface: PupilApiInterface,
+        @Host() @Inject(PupilListener) private _ee: PupilListenerInterface,
+        private router: Router        
     ) {
         console.log('CreatePupilComponent: constructor');
         this.pupil = new PupilModel();        

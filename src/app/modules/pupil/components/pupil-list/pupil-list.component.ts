@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject, Host } from '@angular/core';
 
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
+import { PupilApiService } from './../../services/pupil-api.service';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
 import { PupilListener } from './../../listeners/pupil.listener';
+import { PupilListenerInterface } from './../../interfaces/listeners/pupil-listener.interface';
 
 @Component({
 	selector: 'pupil-list',
@@ -13,8 +15,8 @@ export class PupilListComponent implements OnInit {
 	pupils: PupilInterface[];
 
 	constructor(
-		private _ee2: PupilListener,
-		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
+		@Host() @Inject(PupilListener) private _ee2: PupilListenerInterface,		
+		@Host() @Inject(PupilApiService) private pupilApiService: PupilApiInterface,
 		@Inject('MyEventEmitter') private _ee		
 		) {
 		console.log('PupilListComponent: constructor');
