@@ -11,9 +11,8 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'about',
-        pathMatch: 'full',
-        loadChildren: '/app/modules/about/about.module'
+        path: 'about',       
+        loadChildren: '/app/modules/about/about.module#AboutModule'
     },
     {
         path: 'pupils',

@@ -1,12 +1,14 @@
 import { NgModule }  from '@angular/core';
+import { CommonModule }   from '@angular/common';
 
 import { routing } from './about.routing';
 import { AboutComponent }  from './components/about/about.component';
+import { CanAlwaysActivateGuard } from './guards/can-always-activate.guard';
 
 @NgModule({
-    imports:      [ routing ],
-    declarations: [ AboutComponent],
+    imports:      [ routing, CommonModule ],
+    declarations: [ AboutComponent ],
     bootstrap:    [],
-    providers: [],
+    providers: [ CanAlwaysActivateGuard ],
 })
-export default class AboutModule {}
+export class AboutModule {}

@@ -21,7 +21,7 @@ export class NotificationComponent implements OnDestroy, OnInit {
 
 	constructor(
 		@Inject(PupilListener) private _ee: PupilListenerInterface,
-		@Inject(PupilApiService) private _pupilApiService: PupilApiInterface) { console.log(this._ee); }
+		@Inject(PupilApiService) private _pupilApiService: PupilApiInterface) { }
 
 	ngOnDestroy() {
 		this._ee.removeListener(this._ee.PUPIL_CREATED, this.updatePupilCounter.bind(this));
@@ -35,8 +35,7 @@ export class NotificationComponent implements OnDestroy, OnInit {
 			.subscribe(pupils => this.pupilCounter = pupils.length);
 	}
 
-	private	updatePupilCounter(pupil: PupilInterface) {
-		console.log('ha ha ha');
+	private	updatePupilCounter(pupil: PupilInterface) {		
 		this.pupilCounter++;
 	}
 
