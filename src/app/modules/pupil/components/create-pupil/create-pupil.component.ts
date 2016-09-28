@@ -23,7 +23,7 @@ export class CreatePupilComponent implements CanComponentDeactivate {
     constructor(
         @Host() @Inject(PupilApiService) private pupilApiInterface: PupilApiInterface,
         @Host() @Inject(PupilListener) private _ee: PupilListenerInterface,
-        private router: Router        
+        private router: Router
     ) {
         console.log('CreatePupilComponent: constructor');
         this.pupil = new PupilModel();        

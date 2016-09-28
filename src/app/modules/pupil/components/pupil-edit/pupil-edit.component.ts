@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { PupilFormComponent } from './../pupil-form/pupil-form.component';
 import { PupilApiInterface } from './../../interfaces/services/pupil-api.interface';
 import { PupilInterface } from './../../interfaces/models/pupil.interface';
+import { PupilApiService } from './../../services/pupil-api.service';
 
 @Component({
 	selector: 'pupil-edit',
@@ -17,7 +18,7 @@ export class PupilEditComponent implements OnInit {
 	private formDirty: boolean = false;
 
 	constructor(
-		@Host() @Inject('PupilApiInterface') private pupilApiService: PupilApiInterface,
+		@Host() @Inject(PupilApiService) private pupilApiService: PupilApiInterface,
 		private route: ActivatedRoute,
 		private router: Router) {
 		console.log('PupilEditComponent: construct');
