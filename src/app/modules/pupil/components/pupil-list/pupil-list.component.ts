@@ -51,6 +51,7 @@ export class PupilListComponent implements OnInit, OnDestroy {
 	}
 
 	private updateUserList(pupils: Array<PupilInterface>) {
+		console.log('Got pupisl, update the list', pupils);
 		this.pupils = pupils;
 	}
 }

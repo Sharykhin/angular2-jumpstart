@@ -28,10 +28,10 @@ export class PupilListener extends EventEmitter implements PupilListenerInterfac
 	}
 
 	onPupilCreated(pupil: PupilInterface): void {
-		//this.emit(PUPIL_CREATED, [pupil]);
+		this.emit(PUPIL_CREATED, [pupil]);
 	}
 
 	onPupilDeleted(pupil: PupilInterface): void {
-		//this.emit(PUPIL_DELETED, [pupil]);
+		this.emit(PUPIL_DELETED, [pupil]);
 	}
 }

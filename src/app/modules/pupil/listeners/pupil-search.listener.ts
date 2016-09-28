@@ -22,6 +22,6 @@ export class PupilSearchListener extends EventEmitter implements PupilSearchList
 	}
 
 	onSearch(pupils: Array<PupilInterface>) {
-		this.emit(SEARCH, [pupils]);
+		this.emit(SEARCH, pupils);
 	}
 }

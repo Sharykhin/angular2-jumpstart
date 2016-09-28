@@ -5,6 +5,4 @@ export interface EventsInterface {
 	removeListener(eventName: string, callback);
 
 	emit(eventName: string, params: any);
-
-	new(): EventsInterface;
 }
