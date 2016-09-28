@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-declare var EventEmitter;
+import { EventsInterface } from './../interfaces/events.interface';
+import { ConstructorInterface } from './../interfaces/constructor.interface';
+import { PupilInterface } from './../interfaces/models/pupil.interface';
+import { PupilListenerInterface } from './../interfaces/listeners/pupil-listener.interface';
 
 const PUPIL_CREATED = 'onPupilCreated';
 const PUPIL_DELETED = 'onPupilDeleted';
 
-import { PupilInterface } from './../interfaces/models/pupil.interface';
-import { PupilListenerInterface } from './../interfaces/listeners/pupil-listener.interface';
+declare let EventEmitter: ConstructorInterface;
 
 @Injectable()
 export class PupilListener extends EventEmitter implements PupilListenerInterface {	
@@ -14,7 +16,7 @@ export class PupilListener extends EventEmitter implements PupilListenerInterfac
 
 	constructor() {
 		super();
-	   return PupilListener.instance = PupilListener.instance || this;
+	   	return PupilListener.instance = PupilListener.instance || this;
 	}
 
 	get PUPIL_CREATED() {		
@@ -25,11 +27,11 @@ export class PupilListener extends EventEmitter implements PupilListenerInterfac
 		return PUPIL_DELETED;
 	}
 
-	onPupilCreated(pupil: PupilInterface) {
-		this.emitEvent(PUPIL_CREATED, [pupil]);
+	onPupilCreated(pupil: PupilInterface): void {
+		this.emit(PUPIL_CREATED, [pupil]);
 	}
 
-	onPupilDeleted(pupil: PupilInterface) {
-		this.emitEvent(PUPIL_DELETED, [pupil]);
+	onPupilDeleted(pupil: PupilInterface): void {
+		this.emit(PUPIL_DELETED, [pupil]);
 	}
 }
