@@ -7,8 +7,7 @@ import { AboutComponent } from './components/about/about.component';
 const aboutRoutes: Routes = [
     {
         path: '',
-        component: AboutComponent,
-        canActivate: ['CanAlwaysActivateGuard']
+        component: AboutComponent        
     }
 ];
 

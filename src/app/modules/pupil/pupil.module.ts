@@ -25,7 +25,8 @@ import { routing } from './pupil.routing';
         { provide: 'PupilApiInterface', useClass: PupilApiService },
         ConfirmDeactivateGuard,
         PupilResolveService,
-        PupilListener
+        PupilListener,
+        PupilApiService
         /*{
             provide: PupilListener, useFactory: () => {
                 console.log('use factory to create a new instance of PupilListener');

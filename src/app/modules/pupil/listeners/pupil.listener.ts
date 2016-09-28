@@ -5,15 +5,16 @@ const PUPIL_CREATED = 'onPupilCreated';
 const PUPIL_DELETED = 'onPupilDeleted';
 
 import { PupilInterface } from './../interfaces/models/pupil.interface';
+import { PupilListenerInterface } from './../interfaces/listeners/pupil-listener.interface';
 
 @Injectable()
-export class PupilListener extends EventEmitter {	
+export class PupilListener extends EventEmitter implements PupilListenerInterface {	
 	
 	static instance: PupilListener;
 
 	constructor() {
 		super();
-	    return PupilListener.instance = PupilListener.instance || this;
+	   return PupilListener.instance = PupilListener.instance || this;
 	}
 
 	get PUPIL_CREATED() {		
