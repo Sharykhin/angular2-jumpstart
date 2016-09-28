@@ -3,11 +3,11 @@ import { PupilInterface } from './../models/pupil.interface';
 
 export interface PupilListenerInterface extends EventsInterface {
 
-	onPupilCreated(pupil: PupilInterface);
+	onPupilCreated(pupil: PupilInterface) : void;
 
-	onPupilDeleted(pupil: PupilInterface);
+	onPupilDeleted(pupil: PupilInterface) : void;
 
-	PUPIL_DELETED:string;
+	PUPIL_DELETED: string;
 
-	PUPIL_CREATED:string;
+	PUPIL_CREATED: string;
 }
