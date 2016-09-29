@@ -5,10 +5,11 @@ import { routing } from './about.routing';
 import { AboutComponent }  from './components/about/about.component';
 import { AdsComponent } from './components/ads/ads.component';
 import { CanAlwaysActivateGuard } from './guards/can-always-activate.guard';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
     imports:      [ routing, CommonModule ],
-    declarations: [ AboutComponent, AdsComponent ],
+    declarations: [ AboutComponent, AdsComponent, HighlightDirective ],
     bootstrap:    [],
     providers: [ CanAlwaysActivateGuard ],
 })

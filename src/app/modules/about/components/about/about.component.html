@@ -7,7 +7,7 @@
 </p>
  <div class="form-group">
     <label for="textHightLight">Highlight the text</label>
-    <input type="text" class="form-control" id="textHightLight" placeholder="Some text">
+    <input type="text" class="form-control" id="textHightLight" #text (keyup)="onSearch(text.value)" placeholder="Some text">
   </div>
 <p class="lead">
     It is a long established fact that a reader will be distracted by the readable content of a page when looking at
@@ -17,7 +17,7 @@
     will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
     accident, sometimes on purpose (injected humour and the like).
 </p>
-<p class="lead">
+<p class="lead" myHighlight [highlightColor]="highlightColor">
     It is a long established fact that a reader will be distracted by the readable content of a page when looking at
     its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
     as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
