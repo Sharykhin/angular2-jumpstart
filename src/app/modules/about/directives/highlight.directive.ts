@@ -14,13 +14,14 @@ export class HighlightDirective {
 	constructor(
 		private el: ElementRef, 
 		private renderer: Renderer,
-		@Inject('MyEventEmitter') private myEventEmitter) {
-		
-		this._text = this.el.nativeElement.innerHTML;
+		@Inject('MyEventEmitter') private myEventEmitter) {		
 
 		this.myEventEmitter.addListener('HIGHTLIGHT',  text => {
-			console.log(text);
-		})
+			this._text = this._text || this.el.nativeElement.innerHTML;
+			this.el.nativeElement.innerHTML = this._text;
+			let color = this.hitghlighColor || this._defaultColor;
+			this.el.nativeElement.innerHTML = this.el.nativeElement.innerHTML.replace(new RegExp(text, 'g'), `<span style="background-color:${color};">${text}</span>`);
+		});
 	}
 
 	@HostListener('mouseenter') onMouseEnter() {
