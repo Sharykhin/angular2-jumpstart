@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit, Inject, Renderer, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
 
 @Component({
     selector: 'about',
@@ -11,8 +11,13 @@ export class AboutComponent implements OnInit {
 
     highlightColor = 'lime';
 
+    textSearch: string;
+
+    @ViewChild('inputSearch') input: ElementRef;
+
     constructor(
-        @Inject('MyEventEmitter') private myEventEmitter
+        @Inject('MyEventEmitter') private myEventEmitter,
+        private _renderer: Renderer
     ) {
         console.log('AboutComponent: constructor');
     }
@@ -21,8 +26,18 @@ export class AboutComponent implements OnInit {
         console.log('AboutComponent: Method ngOnInit');
     }
 
-    onSearch(value: string) {
-        console.log(value);
-        this.myEventEmitter.emit('HIGHTLIGHT', value);
+    onSearch() {      
+        this.myEventEmitter.emit('HIGHTLIGHT', this.textSearch);
+    }
+
+    setColor(color: string) {
+        this.highlightColor = color;
+        setTimeout(() => {
+            this.myEventEmitter.emit('HIGHTLIGHT', this.textSearch);    
+        }, 0);        
+    }
+
+    ngAfterViewInit() {
+         this._renderer.invokeElementMethod(this.input.nativeElement, 'focus');
     }
 }
