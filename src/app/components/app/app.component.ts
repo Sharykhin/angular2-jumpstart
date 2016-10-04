@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+
+import { AuthServiceInterface } from './../../interfaces/services/auth-service.interface';
+import { AuthService } from './../../services/auth.service';
+
 
 @Component({
 	selector: 'app',
@@ -7,11 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-	constructor() {
+	constructor(
+		@Inject(AuthService) private _authService: AuthServiceInterface
+		) {
 		console.log('AppComponent: constructor');
 	}
 
 	ngOnInit() {
 		console.log('AppComponent: Method ngOnInit');
+	}
+
+	login() {
+		this._authService.login('admin2', 'admin')
+			.subscribe(
+				data => console.log('got data', data)				
+			);
 	}
 }
