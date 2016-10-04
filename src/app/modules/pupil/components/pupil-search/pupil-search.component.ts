@@ -25,6 +25,7 @@ export class PupilSearchComponent {
 
 		this.term.valueChanges
 			.debounceTime(500)
+			.distinctUntilChanged()
 			.switchMap(term => this.pupilApiService.search(term))
 			.subscribe(pupils => {
 				this._searchEventEmitter.onSearch(pupils);
