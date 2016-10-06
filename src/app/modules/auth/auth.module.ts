@@ -6,7 +6,7 @@ import { routing } from './auth.routing';
 import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
-	imports: [ routing, CommonModule ],
+	imports: [ routing, CommonModule, ReactiveFormsModule ],
 	declarations: [ AuthComponent ],
 	providers: [
 		{ provide: 'ApiUserEndpoint', useValue: 'http://localhost:5000/users' }

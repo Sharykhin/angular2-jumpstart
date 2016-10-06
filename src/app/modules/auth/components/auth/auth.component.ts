@@ -11,15 +11,28 @@ export class AuthComponent {
 
 	userForm: FormGroup;
 
+	isRegister: boolean = false;
+
 	constructor(
 		@Inject(FormBuilder) private _formBuilder
 		) {}
 
 	ngOnInit() {
 		this.userForm = this._formBuilder.group({
-			'username': [''],
-			'password': [''],
+			'username': ['', Validators.required],
+			'password': ['', Validators.required],
 			'confirm_password': ['']
 		});
+	}
+
+	onRegisterState() {
+		this.isRegister = !this.isRegister;
+	}
+
+	onSubmit(value: { [s: string]: string }) {		
+		console.log()
+		let user = new UserModel(value['username'], value['password']);
+		console.log(user);
+		return false;
 	}
 }
