@@ -22,8 +22,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a (click)="login()" style="cursor: pointer;" href="#">Login</a>
+                <li class="auth-btn" [routerLinkActive]="'active'">
+                    <a [routerLink]="['/sign-in']" style="cursor: pointer;" href="#">Login</a>
                 </li>
                 <li>
                     <notification></notification>
