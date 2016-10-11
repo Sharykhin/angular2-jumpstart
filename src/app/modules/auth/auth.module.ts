@@ -4,11 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { routing } from './auth.routing';
 import { AuthComponent } from './components/auth/auth.component';
-import { ConfirmPasswordDirective } from './directives/confirm-password.directive';
+import { EqualValidator } from './directives/equal.validator';
 
 @NgModule({
 	imports: [ routing, CommonModule, ReactiveFormsModule ],
-	declarations: [ AuthComponent, ConfirmPasswordDirective ],
+	declarations: [ AuthComponent, EqualValidator ],
 	providers: [
 		{ provide: 'ApiUserEndpoint', useValue: 'http://localhost:5000/users' }
 	]

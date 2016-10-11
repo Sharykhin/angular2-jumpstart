@@ -20,13 +20,17 @@ export class AuthComponent {
 	ngOnInit() {
 		this.userForm = this._formBuilder.group({
 			'username': ['', Validators.required],
-			'password': ['', Validators.required],
-			'confirm_password': ['']
+			'password': ['', Validators.required]			
 		});
 	}
 
 	onRegisterState() {
 		this.isRegister = !this.isRegister;
+		if (this.isRegister) {
+			this.userForm.addControl('confirm_password', new FormControl('', Validators.required));
+		} else {
+			delete this.userForm.controls.confirm_password;
+		}
 	}
 
 	onSubmit(value: { [s: string]: string }) {		
