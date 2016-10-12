@@ -1,11 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { AuthServiceInterface } from './../interfaces/services/auth-service.interface';
+import { AuthApiInterface } from './../interfaces/auth-api.interface';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
-export class AuthService implements AuthServiceInterface {
+export class AuthApiService implements AuthApiInterface {
 
 	constructor(
 		@Inject(Http) private _http,
