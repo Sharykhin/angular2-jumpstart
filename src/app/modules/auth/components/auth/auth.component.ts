@@ -29,7 +29,9 @@ export class AuthComponent {
 		if (this.isRegister) {
 			this.userForm.addControl('confirm_password', new FormControl('', Validators.required));
 		} else {
-			delete this.userForm.controls.confirm_password;
+			if (this.userForm.controls.hasOwnProperty('confirm_password')) {
+				delete this.userForm.controls['confirm_password'];	
+			}			
 		}
 	}
 

@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { StatisticComponent } from './components/statistic/statistic.component';
+
 import { AppRequestOptions } from './config/app-request-options';
 import { RequestOptions } from '@angular/http';
 
@@ -20,7 +22,7 @@ declare var EventEmitter: any;
 
 @NgModule({
     imports:      [ BrowserModule, routing, HttpModule ],
-    declarations: [ AppComponent, HomeComponent, NotFoundComponent, NotificationComponent ],
+    declarations: [ AppComponent, HomeComponent, NotFoundComponent, NotificationComponent, StatisticComponent ],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders,       
