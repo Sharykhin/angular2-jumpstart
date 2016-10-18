@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Host } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserModel } from './../../models/user.model';
+import { AuthApiInterface } from './../../interfaces/auth-api.interface';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'auth',
@@ -14,7 +16,9 @@ export class AuthComponent {
 	isRegister: boolean = false;
 
 	constructor(
-		@Inject(FormBuilder) private _formBuilder
+		@Inject(FormBuilder) private _formBuilder: FormBuilder,
+		@Host() @Inject('AuthApiService') private _authApiService: AuthApiInterface,
+		@Inject(Router) private _router: Router
 		) {}
 
 	ngOnInit() {
@@ -39,6 +43,12 @@ export class AuthComponent {
 		console.log()
 		let user = new UserModel(value['username'], value['password']);
 		console.log(user);
+		this._authApiService.login(value['username'], value['password'])
+			.subscribe(data => {
+				if (data.uid) {
+					this._router.navigate(['/']);
+				}
+			});			
 		return false;
 	}
 }
