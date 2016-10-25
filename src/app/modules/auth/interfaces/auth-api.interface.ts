@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 
 export interface AuthApiInterface {
-	isLoggedIn() : boolean;
+	
+	isLoggedIn() : Observable<any>;
 
 	login(username: string, password: string) : Observable<any>
 }
