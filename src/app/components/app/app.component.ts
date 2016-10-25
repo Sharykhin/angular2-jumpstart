@@ -13,6 +13,8 @@ import { AuthApiService } from './../../modules/auth/services/auth-api.service';
 })
 export class AppComponent implements OnInit {
 
+	public isAuthenticated: boolean = false;
+
 	constructor(
 		@Inject(AuthService) private _authService: AuthServiceInterface,
 		@Inject(AuthApiService) private _authApiService: AuthApiInterface
@@ -23,7 +25,11 @@ export class AppComponent implements OnInit {
 	ngOnInit() {
 		console.log('AppComponent: Method ngOnInit');
 		this._authApiService.isLoggedIn()
-			.subscribe(data => console.log(data));
+			.subscribe(data => {
+				if (data.id) {
+					this.isAuthenticated = true;
+				}
+			});
 	}
 
 	login() {

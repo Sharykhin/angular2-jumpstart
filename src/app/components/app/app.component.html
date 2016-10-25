@@ -22,7 +22,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="auth-btn" [routerLinkActive]="'active'">
+                <li class="auth-btn" *ngIf="!isAuthenticated" [routerLinkActive]="'active'">
                     <a [routerLink]="['/sign-in']" style="cursor: pointer;" href="#">Login</a>
                 </li>
                 <li>
