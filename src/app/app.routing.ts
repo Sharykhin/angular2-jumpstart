@@ -10,18 +10,6 @@ const appRoutes: Routes = [
         path: '',
         component: HomeComponent
     },
-    {
-        path: 'about',       
-        loadChildren: '/app/modules/about/about.module#AboutModule'
-    },
-    {
-        path: 'pupils',
-        loadChildren: '/app/modules/pupil/pupil.module#PupilModule'
-    },
-    {
-        path: 'sign-in',
-        loadChildren: '/app/modules/auth/auth.module#AuthModule'
-    },
     { 
         path: '**', 
         component: NotFoundComponent 
