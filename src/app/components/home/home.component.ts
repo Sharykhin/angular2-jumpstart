@@ -1,7 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 
+import { Store } from '@ngrx/store';
+import { INCREMENT, DECREMENT, RESET } from './../../reducers/counter.reducer';
+
 declare var module: {
    id: string;
+}
+
+interface AppState {
+  counter: number;
 }
 
 @Component({
@@ -12,9 +19,21 @@ declare var module: {
 })
 export class HomeComponent implements OnInit  {
 
-    constructor(        
+    constructor( private store: Store<AppState>       
     ) {
         console.log('HomeComponent: constructor');
+    }
+
+    increment(){
+        this.store.dispatch({ type: INCREMENT });
+    }
+
+    decrement(){
+        this.store.dispatch({ type: DECREMENT });
+    }
+
+    reset(){
+        this.store.dispatch({ type: RESET });
     }
 
     ngOnInit () {

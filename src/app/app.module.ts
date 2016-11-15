@@ -10,9 +10,26 @@ import { AppRequestOptions } from './config/app-request-options';
 import { RequestOptions } from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routing';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './reducers/counter.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
 @NgModule({
-    imports:      [ BrowserModule, routing, HttpModule ],
+    imports:      [ 
+    	BrowserModule, 
+    	routing, 
+    	HttpModule, 
+    	StoreModule.provideStore({ counter: counterReducer }), 
+    	StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    	StoreDevtoolsModule.instrumentStore({
+	      monitor: useLogMonitor({
+	        visible: true,
+	        position: 'right'
+	      })
+    }),
+    StoreLogMonitorModule	
+	],
     declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
     bootstrap:    [ AppComponent ],
     providers: [

@@ -32,7 +32,13 @@
             '@angular/forms/testing': 'npm:@angular/forms/bundles/forms-testing.umd.js',
             // other libraries
             'rxjs':                       'npm:rxjs',
-            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api'
+            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+            '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
+            '@ngrx/core/operator/select':'npm:@ngrx/core/operator/select.js',
+            '@ngrx/core/compose':'npm:@ngrx/core/compose.js',
+            '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
+            '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
+            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

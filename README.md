@@ -16,3 +16,6 @@ Usage:
 cd api
 dpd -o -p 5000
 
+https://github.com/ngrx/store
+
+
