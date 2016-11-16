@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { PupilFormComponent } from './components/pupil-form/pupil-form.component';
 
 import { AppRequestOptions } from './config/app-request-options';
 import { RequestOptions } from '@angular/http';
@@ -30,7 +32,7 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
     }),
     StoreLogMonitorModule	
 	],
-    declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
+    declarations: [ AppComponent, HomeComponent, NotFoundComponent, CounterComponent, PupilFormComponent ],
     bootstrap:    [ AppComponent ],
     providers: [
         appRoutingProviders,       

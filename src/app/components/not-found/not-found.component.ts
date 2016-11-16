@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 
+declare var module: {
+	id: string
+};
+
 @Component({
 	selector: 'not-found',
-	templateUrl: 'app/components/not-found/not-found.component.html'
+	moduleId: module.id,
+	templateUrl: 'not-found.component.html'
 })
 export class NotFoundComponent {
 
