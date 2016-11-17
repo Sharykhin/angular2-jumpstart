@@ -7,7 +7,8 @@ export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
 
-export const counterReducers: ActionReducer<number> = (state: number = 0, action: Action) => {
+
+export const counterReducer: ReducerInterface<number> = (state: number = 0, action: ActionInterface) => {
     switch (action.type) {
         case INCREMENT:
             return state + 1;
@@ -18,19 +19,6 @@ export const counterReducers: ActionReducer<number> = (state: number = 0, action
         case RESET:
             return 0;
 
-        default:
-            return state;
-    }
-}
-
-export const counterReducer: ReducerInterface<number> = (state: number = 0, action: ActionInterface) => {
-    switch (action.type) {
-        case PUPIL_ACTIONS.CREATE:
-            return state + 1;
-        case PUPIL_ACTIONS.DELETE:
-            return state - 1;
-        case PUPIL_ACTIONS.PLUS:
-            return state + action.payload
         default:
             return state;
     }

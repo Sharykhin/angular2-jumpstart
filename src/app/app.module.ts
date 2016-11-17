@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent }  from './components/app/app.component';
@@ -29,8 +30,10 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 	        visible: true,
 	        position: 'right'
 	      })
-    }),
-    StoreLogMonitorModule	
+        }),
+        StoreLogMonitorModule,
+        FormsModule, 
+        ReactiveFormsModule
 	],
     declarations: [ AppComponent, HomeComponent, NotFoundComponent, CounterComponent, PupilFormComponent ],
     bootstrap:    [ AppComponent ],

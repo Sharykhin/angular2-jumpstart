@@ -1,3 +1,4 @@
 export interface AppStateInterface {
-	pupils: {}
-}
+	pupils: any[],
+	counter: number
+};

@@ -1,4 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {AppStateInterface} from './../../interfaces/app-state.interface';
+import { Store } from '@ngrx/store';
+import {PUPIL_ACTIONS} from './../../actions/pupil.actions';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {PupilCreateActionInterface} from './../../interfaces/action-pupil.interface';
 
 declare var module: {
 	id: string
@@ -7,7 +12,7 @@ declare var module: {
 @Component({
 	selector:'pupil-form',
 	template: `
-	<form novalidate name="pupilForm" (ngSubmit)="onSubmit()">  
+	<form novalidate name="pupilForm" (ngSubmit)="onSubmit($event)">  
 	  <div class="form-group">
 	    <label for="pupilName">Name</label>
 	    <input type="text" class="form-control" name="name" id="pupilName" placeholder="Name" required>	    
@@ -33,11 +38,12 @@ export class PupilFormComponent {
 		'JAVA'
 	];
 
-	constructor() {
+	constructor(@Inject(Store) private _store: Store<AppStateInterface>) {
 		console.log('PupilFormComponent');
 	}
 
-	onSubmit() {
-
+	onSubmit($event) {
+		$event.preventDefault();
+		this._store.dispatch({type:PUPIL_ACTIONS.CREATE, pupil: {name:'New'}} as PupilCreateActionInterface);
 	}
 }

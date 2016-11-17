@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { INCREMENT, DECREMENT, RESET } from './../../reducers/counter.reducer';
+import {AppStateInterface} from './../../interfaces/app-state.interface';
 
 declare var module: {
    id: string;
@@ -19,7 +20,7 @@ interface AppState {
 })
 export class HomeComponent implements OnInit  {
 
-    constructor( private store: Store<AppState>       
+    constructor( private store: Store<AppStateInterface>       
     ) {
         console.log('HomeComponent: constructor');
     }
