@@ -1,9 +1,12 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AppStateInterface} from './../../interfaces/app-state.interface';
 import { Store } from '@ngrx/store';
 import {PUPIL_ACTIONS} from './../../actions/pupil.actions';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import {PupilCreateActionInterface} from './../../interfaces/action-pupil.interface';
+import {PupilCreateActionInterface, PupilActions} from './../../interfaces/action-pupil.interface';
+import {Pupil} from './../../models/pupil';
+import {PupilInterface} from './../../interfaces/pupil.interface';
+
 
 declare var module: {
 	id: string
@@ -12,7 +15,7 @@ declare var module: {
 @Component({
 	selector:'pupil-form',
 	template: `
-	<form novalidate name="pupilForm" (ngSubmit)="onSubmit($event)">  
+	<form novalidate name="pupilForm" (ngSubmit)="onSubmit($event, pupilForm.value)" [formGroup]="pupilForm">  
 	  <div class="form-group">
 	    <label for="pupilName">Name</label>
 	    <input type="text" class="form-control" name="name" id="pupilName" placeholder="Name" required>	    
@@ -32,18 +35,32 @@ declare var module: {
 	`,
 	styles:['']
 })
-export class PupilFormComponent {
+export class PupilFormComponent implements OnInit {
 	public classes = [
 		'PHP',
 		'JAVA'
 	];
 
-	constructor(@Inject(Store) private _store: Store<AppStateInterface>) {
+	pupil: PupilInterface;
+
+	constructor(
+		@Inject(Store) private _store: Store<AppStateInterface>,
+		@Inject(FormBuilder) private _formBuilder: FormBuilder
+		) {
+		this.pupil = new Pupil('', 'PHP', 0);
 		console.log('PupilFormComponent');
 	}
 
-	onSubmit($event) {
+	ngOnInit() {
+		this.pupilForm = this._formBuilder.group({
+			'name': [this.pupil.name],
+			'className': [this.pupil.className],
+			'level': [this.pupil.level]
+		});
+	}
+
+	onSubmit($event, pupilData: PupilInterface) {
 		$event.preventDefault();
-		this._store.dispatch({type:PUPIL_ACTIONS.CREATE, pupil: {name:'New'}} as PupilCreateActionInterface);
+		this._store.dispatch(PupilActions.createPupul(pupilData) as PupilCreateActionInterface);
 	}
 }
