@@ -38,7 +38,9 @@
             '@ngrx/core/compose':'npm:@ngrx/core/compose.js',
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
             '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
-            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js'
+            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
+            'ngrx-store-freeze':'npm:ngrx-store-freeze/dist/index.js',
+            'deep-freeze': 'npm:deep-freeze/index.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

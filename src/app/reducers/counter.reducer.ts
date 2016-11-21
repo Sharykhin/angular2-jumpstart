@@ -8,18 +8,26 @@ export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
 
 
-export const counterReducer: ReducerInterface<number> = (state: number = 0, action: ActionInterface) => {
+export interface State {
+  counter: number;
+};
+
+const initialState: State = {
+  counter: 0
+};
+
+export function counterReducer(state = initialState, action: Action) : State {
     switch (action.type) {
         case INCREMENT:
-            return state + 1;
+            return state.counter + 1;
 
         case DECREMENT:
-            return state - 1;
+            return state.counter - 1;
 
         case RESET:
             return 0;
 
         default:
-            return state;
+            return state.counter;
     }
 }

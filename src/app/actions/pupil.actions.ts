@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import {PupilInterface} from './../interfaces/pupil.interface';
 
 export const PUPIL_ACTIONS = {
-	CREATE: 'CREATE',
-	DELETE: 'DELETE',
-	UPDATE: 'UPDATE',
+	CREATE: 'PUPIL_CREATE',
+	DELETE: 'PUPIL_DELETE',
+	UPDATE: 'PUPIL_UPDATE',
 	PLUS: 'PLUS'
 };
 
@@ -16,7 +16,7 @@ export class PupilActions {
 
 	}
 
-	static createPupul(pupil: PupilInterface) {
+	static createPupil(pupil: PupilInterface) {
 		return {
 			type: PUPIL_ACTIONS.CREATE,
 			payload: pupil

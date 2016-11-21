@@ -5,16 +5,19 @@ import { PUPIL_ACTIONS } from './../actions/pupil.actions';
 import {AppStateInterface} from './../interfaces/app-state.interface';
 import {PupilCreateActionInterface} from './../interfaces/action-pupil.interface';
 
+export interface State {
+  pupils: any[];
+};
 
-export const pupilReducer: ReducerInterface<AppStateInterface> = (state: AppStateInterface, action: Action) : AppStateInterface => {
+const initialState: State = {
+  pupils: []
+};
+
+export function pupilReducer(state = initialState, action: Action) : State {   
     switch (action.type) {
         case PUPIL_ACTIONS.CREATE:
-            return {
-                pupils: state.pupils.concat(
-                    (<PupilCreateActionInterface>action).pupil
-                )
-            }   
-
+            console.log(action);
+            return { pupils: state.pupils.concat((<PupilCreateActionInterface>action).payload) };
         default:
             return state;
     }

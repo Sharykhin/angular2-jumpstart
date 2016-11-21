@@ -15,6 +15,7 @@ import { RequestOptions } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './reducers/counter.reducer';
+import { reducer } from './reducers/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
@@ -23,7 +24,7 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
     	BrowserModule, 
     	routing, 
     	HttpModule, 
-    	StoreModule.provideStore({ counter: counterReducer }), 
+    	StoreModule.provideStore(reducer), 
     	StoreDevtoolsModule.instrumentOnlyWithExtension(),
     	StoreDevtoolsModule.instrumentStore({
 	      monitor: useLogMonitor({
