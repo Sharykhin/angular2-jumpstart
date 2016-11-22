@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AppStateInterface} from './../../interfaces/app-state.interface';
+import { AppStateInterface } from './../../reducers/index';
 import { Store } from '@ngrx/store';
 import {PUPIL_ACTIONS, PupilActions} from './../../actions/pupil.actions';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -36,12 +36,14 @@ declare var module: {
 	styles:['']
 })
 export class PupilFormComponent implements OnInit {
+
 	public classes = [
 		'PHP',
 		'JAVA'
 	];
 
 	pupil: PupilInterface;
+	pupilForm: FormGroup;
 
 	constructor(
 		@Inject(Store) private _store: Store<AppStateInterface>,

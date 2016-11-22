@@ -2,7 +2,7 @@ import {counterReducer} from './counter.reducer';
 import {pupilReducer} from './pupil.reducer';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { AppStateInterface } from './../interfaces/app-state.interface';
+import { PupilInterface } from './../interfaces/pupil.interface';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -19,6 +19,11 @@ const reducers = {
   pupils: pupilReducer
 };
 
+
+export interface AppStateInterface {
+	pupils: Array<PupilInterface>,
+	counter: number
+};
 
 const developmentReducer: ActionReducer<AppStateInterface> = compose(storeFreeze, combineReducers)(reducers);
 const productionReducer: ActionReducer<AppStateInterface> = combineReducers(reducers);

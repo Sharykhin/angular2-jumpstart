@@ -1,6 +1,5 @@
-import {Injectable, Inject} from '@angular/core';
-import { Store } from '@ngrx/store';
-import {PupilInterface} from './../interfaces/pupil.interface';
+import { Injectable, Inject } from '@angular/core';
+import { PupilInterface } from './../interfaces/pupil.interface';
 
 export const PUPIL_ACTIONS = {
 	CREATE: 'PUPIL_CREATE',
@@ -12,16 +11,10 @@ export const PUPIL_ACTIONS = {
 @Injectable()
 export class PupilActions {
 
-	constructor(@Inject('Store') private _store: Store) {
-
-	}
-
 	static createPupil(pupil: PupilInterface) {
 		return {
 			type: PUPIL_ACTIONS.CREATE,
 			payload: pupil
 		}
 	}
-
 }
-

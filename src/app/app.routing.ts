@@ -12,6 +12,10 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'pupils',
+        loadChildren: '/app/modules/pupils/pupil.module#PupilModule'
+    },
+    {
     	path:'create',
     	component: PupilFormComponent
     },
